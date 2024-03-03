@@ -1,0 +1,410 @@
+:root {
+	/* Colors */
+		--color-primary: #b5838d;
+		--color-secondary: #e5989b;
+		--dark-variation: #6d6875;
+		--color-variation: #ffb4a2;
+		--soft-variation: #ffcdb2;
+		--just-white: #FFF;
+		--soft-white: bisque;
+		--just-grey: #C7C7C7;
+		--warm-black: #282623;
+		--just-black: #000;
+		--text-input-field: #F7F7F7;
+		--hospital-green: #ACD9B2;
+
+	--sm: 14px;
+	--md: 16px;
+	--lg: 18px;
+
+	/* Fonts */
+		--title-h1: 36rem;
+		--title-h2: 32rem;
+		--title-h3: 28rem;
+		--title-h4: 26rem;
+		--title-h5: 24rem;
+		--title-h6: 22rem;
+		--paragraphs: 16rem;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+	font-size: 6.25%;
+}
+
+body {
+	width: 100vw;
+	height: auto;
+	font-family: "Kaushan Script", cursive;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* font-family: 'Quicksand', sans-serif; */
+}
+
+p {
+	font-family: "Poppins", sans-serif;
+}
+
+header {
+	width: 100vw;
+	height: 100px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	color: var(--just-white);
+	background-color: var(--color-primary);
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 24px;
+	width: 100vw;
+	/* border-bottom: 1px solid var(--); */
+}
+
+header .brand {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+header .btn-menu > label {
+	margin-right: 50px;
+}
+
+.logo {
+	height: 65px;
+	margin-right: 10px;
+}
+.logoName {
+	font-size: 26rem;
+	font-weight: normal;
+}
+
+#btn-menu {
+	display: none;
+}
+
+.mobile-menu {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 2;
+	transition: all 800ms linear;
+	background-color: var(--just-white);
+	visibility: hidden;
+	opacity: 0;
+	/* overflow-x: hidden; */
+}
+
+#btn-menu:checked~.mobile-menu {
+	opacity: 1;
+	visibility: visible;
+}
+
+.menu__content {
+	/* position: relative; */
+	width: inherit;
+	height: inherit;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	transition: all 600ms linear;
+	transform: translateX(-100%);
+	/* transform: translateY(25%); */
+}
+
+#btn-menu:checked~.mobile-menu .menu__content {
+	transform: translateX(0%);
+}
+
+.menu__content label {
+	width: 35px;
+	height: 35px;
+	position: absolute;
+	top: 30px;
+	right: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--dark-variation);
+	border-radius: 20px;
+	cursor: pointer;
+}
+.menu__content label > img {
+	width: 17px;
+}
+
+.menu__content .upperSection, .menu__content .bSection {
+	width: 100%;
+}
+
+.menu__content ul {
+	list-style: none;
+}
+
+.menu__content h3 {
+	font-size: var(--title-h5);
+	margin-bottom: 40px;
+}
+
+.menu__content a {
+	display: block;
+	margin-left: 30px;
+	text-decoration: none;
+	font-size: var(--paragraphs);
+	color: var(--just-black);
+	font-family: 'Quicksand', sans-serif;
+	font-weight: bold;
+	font-family: "Poppins", sans-serif;
+}
+
+/* .menu__content nav a:hover {
+	border-left: 3px solid var(--just-grey);
+	background-color: var(--warm-black);
+} */
+
+.mobile-menu ul:nth-child(1) {
+	padding: 0;
+	margin: 24px 0 0;
+	border-bottom: 2px solid var(--color-primary);
+}
+.mobile-menu ul:last-child {
+	padding: 0;
+	margin: 24px 0 0;
+}
+.mobile-menu .bSection {
+	position: relative;
+	bottom: 0;
+}
+
+.mobile-menu ul li {
+	margin-bottom: 24px;
+}
+
+.mobile-menu .email {
+	font-size: var(--sm);
+	font-weight: 200;
+}
+
+.mobile-menu .sign-out {
+	color: var(--color-primary);
+	font-size: var(--sm);
+}
+
+.menu, .navbar-shopping-cart {
+	display: none;
+}
+
+.navbar-left ul,
+.navbar-right ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	height: 60px;
+}
+
+.navbar-left {
+	display: flex;
+	align-items: center;
+	width: inherit;
+}
+
+#baner {
+	width: 100vw;
+	height: 400px;
+	position: relative;
+	background-image: url('./images/pasteleria-w-chef.jpg');
+	/* background-position: center; */
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: var(--just-white);
+	margin-top: 100px;
+}
+#baner .baner-capa {
+	width: 100vw;
+	height: inherit;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#baner .baner__info {
+	position: absolute;
+	bottom: 0;
+	padding: 0 30px 30px;
+}
+#baner .baner__info > h3 {
+	font-size: var(--title-h3);
+}
+#baner .baner__info > p {
+	font-size: var(--sm);
+	text-align: justify;
+	font-weight: 500;
+}
+
+
+/* mucho por revisar */
+/* secciones blanco */
+.blanco.contenedor,
+.negro.contenedor {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: center; */
+	align-items: center;
+	height: auto;
+	width: 100vw;
+}
+
+.blanco h2,
+.negro h2 {
+	font-size: var(--title-h2);
+	margin: 40px 0 20px;
+}
+
+.blanco p,
+.negro p {
+	font-size: var(--paragraphs);
+	text-align: justify;
+}
+
+.info {
+	/* width: 80%; */
+	padding: 0 40px;
+}
+
+
+/* Slider */
+.frame-slider {
+	width: 200px;
+	height: 200px;
+	margin: 30px 0 60px;
+	overflow: hidden;
+	border: 4px solid var(--just-grey);
+	border-radius: 20px;
+	box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.9);
+}
+
+.frame-slider ul {
+	display: flex;
+	padding: 0;
+	width: 300%;
+	height: 100%;
+	animation: slide 10s infinite alternate;
+}
+
+.frame-slider li {
+	width: 100%;
+	list-style: none;
+}
+
+.frame-slider img {
+	height: 100%;
+	width: 100%;
+}
+
+/*Definen los fotogramas de la secuencia de animacion
+se estable un inicio y un fin para cada animacion estos se miden en % y van de 0
+a 100*/
+@keyframes slide {
+
+	/* imagen1 */
+	0% {
+		margin-left: 0%;
+	}
+
+	/*inicio*/
+	30% {
+		margin-left: 0%;
+	}
+
+	/*fin*/
+	/* imagen2 */
+	35% {
+		margin-left: -100%;
+	}
+
+	65% {
+		margin-left: -100%;
+	}
+
+	/* imagen3 */
+	70% {
+		margin-left: -200%;
+	}
+
+	100% {
+		margin-left: -200%;
+	}
+}
+
+.negro {
+	background-color: var(--color-primary);
+	color: var(--just-white);
+}
+
+.blanco.contenedor.resena {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.reviews {
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--dark-variation);
+	padding: 80px 100px;
+	border-radius: 40px;
+}
+
+.reviews>img {
+	width: 60%;
+	border-radius: 1000px;
+}
+
+.reviews .name {
+	font-size: var(--title-h3);
+	color: var(--just-white);
+}
+
+.reviews .review {
+	font-family: "Poppins", sans-serif;
+	color: var(--just-grey);
+}
+
+
+@media (max-width: 640px) {
+	.menu {
+		display: block;
+	}
+
+	.navbar-left ul {
+		display: none;
+	}
+
+	.navbar-email {
+		display: none;
+	}
+}
+
+@media (min-width: 425px) {
+	header .btn-menu>label {
+		margin-right: 0;
+	}
+}

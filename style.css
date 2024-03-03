@@ -197,6 +197,10 @@ header .btn-menu > label {
 	margin-bottom: 24px;
 }
 
+.menu__content > .bSection > .userEmail {
+	margin: 0;
+}
+
 .mobile-menu .email {
 	font-size: var(--sm);
 	font-weight: 200;

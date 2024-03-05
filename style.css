@@ -13,11 +13,7 @@
 		--text-input-field: #F7F7F7;
 		--hospital-green: #ACD9B2;
 
-	--sm: 14px;
-	--md: 16px;
-	--lg: 18px;
-
-	/* Fonts */
+		/* Fonts */
 		--title-h1: 36rem;
 		--title-h2: 32rem;
 		--title-h3: 28rem;
@@ -25,6 +21,10 @@
 		--title-h5: 24rem;
 		--title-h6: 22rem;
 		--paragraphs: 16rem;
+
+		--sm: 14px;
+		--md: 16px;
+		--lg: 18px;
 }
 
 * {
@@ -80,10 +80,10 @@ header .brand {
 	width: 100%;
 }
 
-/* header .brand > svg {
+header label > svg > path {
 	height: 35px;
-	fill: var(--just-white);
-} */
+	/* fill: var(--just-black); */
+}
 
 header .btn-menu > label {
 	margin-left: 20px;
@@ -130,7 +130,7 @@ header .btn-menu > label {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 12px 24px 30px;
+	padding: 30px 24px 30px;
 	transition: all 600ms linear;
 	transform: translateX(100%);
 	/* transform: translateY(25%); */
@@ -155,6 +155,7 @@ header .btn-menu > label {
 }
 .menu__content label > img {
 	width: 17px;
+	fill: var(--soft-variation);
 }
 
 .menu__content .upperSection, .menu__content .bSection {
@@ -187,14 +188,9 @@ header .btn-menu > label {
 } */
 
 .mobile-menu ul:nth-child(1) {
-	padding: 0;
-	margin: 24px 0 0;
 	border-bottom: 2px solid var(--color-primary);
 }
-.mobile-menu ul:last-child {
-	padding: 0;
-	margin: 24px 0 0;
-}
+
 /* .mobile-menu .bSection {
 	position: relative;
 	bottom: 0;
@@ -234,7 +230,6 @@ header .btn-menu > label {
 
 .navbar-left {
 	display: flex;
-	flex-direction: row-reverse;
 	align-items: center;
 	width: inherit;
 }
@@ -244,7 +239,7 @@ header .btn-menu > label {
 	height: 400px;
 	position: relative;
 	/* background-image: url('https://cdn.dribbble.com/userupload/5917176/file/original-dc2669c1cd728bb0306efebb7126498d.jpg?resize=1021x681&vertical=center'); */
-	background-image: url('./images/pasteleria-w-chef.jpg');
+	background-image: url('./assets/images/pasteleria-w-chef.jpg');
 	/* background-position: center; */
 	background-repeat: no-repeat;
 	background-size: cover;

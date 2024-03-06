@@ -39,48 +39,42 @@ html {
 }
 
 body {
-	width: 100vw;
-	height: 100vh;
-	padding: 0 40px;
 	font-family: 'Quicksand', sans-serif;
 }
 
 .form-container {
-	width: 300px;
-	height: inherit;
+	width: 100vw;
+	height: 100vh;
+	padding: 0 40px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 
-.logo__container {
+.logo-container {
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	margin-bottom: 48px;
-	justify-self: center;
-	/* display: none; */
 }
 .logoName {
 	font-family: "Kaushan Script", cursive;
-	font-size: var(--title-h2);
+	font-size: var(--title-h3);
 }
 .logo {
-	/* width: 80px; */
 	height: 80px;
 	margin-right: 20px;
 }
 
 .title {
-	font-size: var(--lg);
-	margin-bottom: 12px;
+	font-size: var(--title-h4);
+	margin-bottom: 16px;
 	text-align: center;
 }
 
 .subtitle {
 	color: var(--warm-black);
-	font-size: var(--md);
+	font-size: var(--paragraphs);
 	font-weight: 300;
 	margin-top: 0;
 	margin-bottom: 32px;
@@ -106,7 +100,7 @@ body {
 }
 
 .resend {
-	font-size: var(--sm);
+	font-size: 14rem;
 }
 
 .resend span {
@@ -119,15 +113,18 @@ body {
 }
 
 .primary-button {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
 	background-color: var(--color-primary);
 	border-radius: 8px;
 	border: none;
 	color: var(--just-white);
-	width: 100%;
-	cursor: pointer;
-	font-size: var(--md);
+	font-size: var(--paragraphs);
 	font-weight: bold;
-	height: 50px;
 	margin-bottom: 12px;
 }
 

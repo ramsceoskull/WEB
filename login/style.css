@@ -12,12 +12,6 @@
 		--just-black: #000;
 		--text-input-field: #F7F7F7;
 		--hospital-green: #ACD9B2;
-		/* --color-primary: #8C2F39;
-			--color-primary: rgb(152 59 69);
-			--color-variation: rgb(247 218 174);
-			--color-secondary: rgb(243 238 228);
-			--dark-variation: rgb(134 146 159);
-			--color3: rgb(34 32 33); */
 
 		/* Fonts */
 		--title-h1: 36rem;
@@ -48,50 +42,44 @@ body {
 	font-family: 'Quicksand', sans-serif;
 }
 
-.login {
-	width: 100%;
+.form-container {
+	width: 100vw;
 	height: 100vh;
-	display: grid;
-	place-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0 30px;
 }
 
-.logo__container {
+.logo-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 48px;
 }
-.logo__container > img {
+.logo-container > .logo {
 	height: 100px;
-	width: auto;
 }
-.logo__container > h1 {
-	font-size: var(--title-h1);
+.logo-container > .logoName {
+	font-size: var(--title-h3);
 	margin-left: 12px;
 	font-family: "Kaushan Script", cursive;
 }
 
-.form-container {
-	display: grid;
-	grid-template-rows: auto 1fr auto;
-	width: 300px;
+.title {
+	font-size: var(--title-h3);
+	margin: 40px 0 50px;
+	text-align: center;
 }
 
 .form {
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 }
 
-.form a {
-	color: var(--color-primary);
-	font-size: var(--sm);
-	text-align: center;
-	text-decoration: none;
-	margin-bottom: 52px;
-}
-
 .label {
-	font-size: 18rem;
+	font-size: 20rem;
 	font-weight: bold;
 	margin-bottom: 4px;
 }
@@ -116,22 +104,17 @@ body {
 	border: none;
 	color: var(--just-white);
 	width: 100%;
-	cursor: pointer;
-	font-size: var(--md);
+	font-size: 18rem;
 	font-weight: bold;
 	height: 50px;
 }
 
-.secondary-button {
-	background-color: var(--white);
-	border-radius: 8px;
-	border: 1px solid var(--color-primary);
+.form a {
 	color: var(--color-primary);
-	width: 100%;
-	cursor: pointer;
-	font-size: var(--md);
-	font-weight: bold;
-	height: 50px;
+	font-size: 14rem;
+	text-align: center;
+	text-decoration: none;
+	margin-bottom: 52px;
 }
 
 .login-button {
@@ -139,15 +122,20 @@ body {
 	margin-bottom: 30px;
 }
 
-@media (max-width: 640px) {
-	.logo {
-		display: block;
-	}
-
-	.secondary-button {
-		width: inherit;
-		position: absolute;
-		bottom: 0;
-		margin-bottom: 20px;
-	}
+.secondary-button {
+	width: calc(100% - 60px);
+	height: 50px;
+	position: absolute;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	background-color: var(--just-white);
+	border: 1px solid var(--color-primary);
+	border-radius: 8px;
+	color: var(--color-primary);
+	font-size: var(--paragraphs);
+	font-weight: bold;
+	margin-bottom: 30px;
 }

@@ -9,6 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./style.css">
   <title>Registrate | Detalles con Corazon</title>
 </head>
 <body>
@@ -19,23 +20,42 @@
 		</div>
 		<h1 class="title">My account</h1>
 		<form action="../php/registerUser.php" method="post" class="form">
-			<div>
-				<label for="name" class="label">Name</label>
-				<input type="text" id="name" placeholder="Ramsés Anceno" class="input input-name">
+			<section class="split80">
+				<div>
+					<label for="name" class="label">Nombre(s)</label>
+					<input type="text" id="name" name="nombre" placeholder="Ramsés Alejandro" class="input input-name">
+				</div>
 
-				<label for="email" class="label">Email address</label>
-				<input type="email" id="email" placeholder="ramses.social0@gmail.com" class="input input-email">
+				<div>
+					<label for="age" class="label">Edad</label>
+					<input type="number" id="age" name="age" placeholder="20" class="input input-age">
+				</div>
+			</section>
 
-				<label for="password" class="label">Password</label>
-				<input type="password" id="password" placeholder="*********" class="input input-password">
-			</div>
+			<section class="split-half">
+				<div>
+					<label for="apellidoP" class="label">Apellido 1</label>
+					<input type="text" id="apellidoP" name="apellidoP" placeholder="Lopez" class="input input-lastname">
+				</div>
 
-			<input type="submit" value="Create" class="primary-button login-button">
+				<div>
+					<label for="apellidoM" class="label">Apellido 2</label>
+					<input type="text" id="apellidoM" name="apellidoM" placeholder="Anceno" class="input input-lastname">
+				</div>
+			</section>
+
+			<label for="email" class="label">Email address</label>
+			<input type="email" id="email" name="email" placeholder="ramses.social0@gmail.com" class="input input-email">
+
+			<label for="password" class="label">Password</label>
+			<input type="password" id="password" name="password" placeholder="*********" class="input input-password">
+
+			<input type="submit" value="Crear usuario" class="primary-button signup-button">
+			<p class="member">
+				<span>Ya tienes una cuenta?</span>
+				<a href="../login/">Inicia sesion</a>
+			</p>
 		</form>
-		<p class="account">
-			<span>Ya tienes una cuenta?</span>
-			<a href="../login/">Inicia sesion</a>
-		</p>
 	</section>
 </body>
 </html>

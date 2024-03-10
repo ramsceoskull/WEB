@@ -139,3 +139,7 @@ body {
 	font-weight: bold;
 	margin-bottom: 30px;
 }
+
+.footer-container {
+	display: none;
+}

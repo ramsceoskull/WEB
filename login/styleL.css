@@ -2,9 +2,9 @@
 	width: 70%;
 }
 
-/* .secondary-button {
+.secondary-button {
 	width: calc(70% - 42px);
-} */
+}
 
 @media (min-width: 1024px) {
 	.logo-container {

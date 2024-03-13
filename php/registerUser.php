@@ -10,7 +10,9 @@
 
 	$sql = mysqli_query($connection, "INSERT INTO Usuario(id, nombres, edad, apellidoPaterno, apellidoMaterno, correo, pass) VALUES (0, '$name', '$age', '$apellidoP', '$apellidoM', '$email', '$password')");
 
-	if($sql)
-		echo " -> Usuario registrado";
+	if($sql) {
+		header('Location: ../');
+		exit;
+	}
 	else
 		echo " -> Error al registrar usuario";

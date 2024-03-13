@@ -312,12 +312,27 @@ header .btn-menu > label {
 	border-radius: 20px;
 	box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.9);
 }
+.resena .frame-slider:last-child {
+	margin: 0 0 60px;
+}
+.review-slider {
+	width: 80%;
+	height: auto;
+	margin-bottom: 60px;
+	border: none;
+	border-radius: 0;
+	box-shadow: 0 0 0 0;
+}
 
 .frame-slider ul {
 	display: flex;
 	padding: 0;
-	width: 300%;
+	width: 100%;
 	height: 100%;
+}
+
+.resena .frame-slider ul {
+	width: 300%;
 	animation: slide 10s infinite alternate;
 }
 
@@ -329,6 +344,17 @@ header .btn-menu > label {
 .frame-slider img {
 	height: 100%;
 	width: 100%;
+}
+
+.frame-slider .name {
+	display: block;
+	font-size: 26px;
+}
+.frame-slider .review {
+	font-size: 16px;
+}
+.frame-slider .name, .frame-slider .review {
+	text-align: center;
 }
 
 /*Definen los fotogramas de la secuencia de animacion
@@ -402,8 +428,27 @@ a 100*/
 	color: var(--just-grey);
 }
 
+footer {
+	height: 10vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	background-color: var(--color-primary);
+	color: white;
+	font-size: 16px;
+	font-family: "Poppins", sans-serif;
+}
 
-@media (max-width: 640px) {
+
+@media (max-width: 768px) {
+	header {
+		height: 89px;
+	}
+	#baner {
+		margin-top: 89px;
+	}
 	.menu {
 		display: block;
 	}
@@ -421,4 +466,8 @@ a 100*/
 	header .btn-menu>label {
 		margin-right: 0;
 	}
+}
+
+@media (min-width : 768px) {
+
 }

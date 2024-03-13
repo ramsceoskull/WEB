@@ -240,6 +240,10 @@ header .btn-menu > label {
 	width: inherit;
 }
 
+.navbar-right, .navbar-left > ul {
+	display: none;
+}
+
 #baner {
 	width: 100vw;
 	height: 400px;
@@ -312,8 +316,11 @@ header .btn-menu > label {
 	border-radius: 20px;
 	box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.9);
 }
+.resena .frame-slider {
+	margin: 0;
+}
 .resena .frame-slider:last-child {
-	margin: 0 0 60px;
+	margin: 10px 0 60px;
 }
 .review-slider {
 	width: 80%;
@@ -357,6 +364,15 @@ header .btn-menu > label {
 	text-align: center;
 }
 
+.negro {
+	background-color: var(--color-primary);
+	color: var(--just-white);
+}
+
+.review-slider {
+	margin-top: 20px;
+}
+
 /*Definen los fotogramas de la secuencia de animacion
 se estable un inicio y un fin para cada animacion estos se miden en % y van de 0
 a 100*/
@@ -392,42 +408,6 @@ a 100*/
 	}
 }
 
-.negro {
-	background-color: var(--color-primary);
-	color: var(--just-white);
-}
-
-.blanco.contenedor.resena {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
-
-.reviews {
-	width: 20%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: var(--dark-variation);
-	padding: 80px 100px;
-	border-radius: 40px;
-}
-
-.reviews>img {
-	width: 60%;
-	border-radius: 1000px;
-}
-
-.reviews .name {
-	font-size: var(--title-h3);
-	color: var(--just-white);
-}
-
-.reviews .review {
-	font-family: "Poppins", sans-serif;
-	color: var(--just-grey);
-}
-
 footer {
 	height: 10vh;
 	width: 100vw;
@@ -439,6 +419,10 @@ footer {
 	color: white;
 	font-size: 16px;
 	font-family: "Poppins", sans-serif;
+}
+
+.footer_contact {
+	display: none;
 }
 
 
@@ -459,15 +443,5 @@ footer {
 @media (min-width: 425px) {
 	header .btn-menu>label {
 		margin-right: 0;
-	}
-}
-
-@media (min-width : 768px) {
-	header {
-		height: 89px;
-	}
-
-	#baner {
-		margin-top: 89px;
 	}
 }

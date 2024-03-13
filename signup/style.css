@@ -40,12 +40,14 @@ html {
 
 body {
 	font-family: 'Quicksand', sans-serif;
+	width: 100vw;
+	height: 100vh;
 }
 
 .form-container {
-	width: 100vw;
-	height: 100vh;
 	display: flex;
+	height: inherit;
+	width: 100%;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -71,6 +73,7 @@ body {
 .title {
 	font-size: var(--title-h3);
 	margin: 40px 0 50px;
+	text-align: center;
 }
 
 .form {
@@ -140,10 +143,14 @@ body {
 }
 
 .member span {
-	color: var(--just-grey);
+	color: var(--dark-variation);
 }
 
 .member a {
 	color: var(--color-primary);
 	text-decoration: none;
+}
+
+.footer-container {
+	display: none;
 }

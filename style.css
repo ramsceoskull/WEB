@@ -443,12 +443,6 @@ footer {
 
 
 @media (max-width: 768px) {
-	header {
-		height: 89px;
-	}
-	#baner {
-		margin-top: 89px;
-	}
 	.menu {
 		display: block;
 	}
@@ -469,5 +463,11 @@ footer {
 }
 
 @media (min-width : 768px) {
+	header {
+		height: 89px;
+	}
 
+	#baner {
+		margin-top: 89px;
+	}
 }

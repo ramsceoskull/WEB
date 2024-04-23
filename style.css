@@ -10,11 +10,9 @@ body {
 	top: 0;
 	left: 0;
 	right: 0;
-	/* z-index: 1; */
+	z-index: 1;
 	color: var(--just-white);
 	background-color: var(--color-primary);
-	border-bottom-left-radius: 15px;
-	border-bottom-right-radius: 15px;
 }
 
 .mobile-header > nav {
@@ -151,18 +149,24 @@ body {
 
 /* PENDIENTE REVISION */
 .baner-container {
-	width: 85vw;
-	height: 300px;
+	width: inherit;
+	height: 400px;
 	position: relative;
 	/* background-image: url('https://cdn.dribbble.com/userupload/5917176/file/original-dc2669c1cd728bb0306efebb7126498d.jpg?resize=1021x681&vertical=center'); */
 	background-image: url('./assets/images/pasteleria-w-chef.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	color: var(--just-white);
-	margin-top: 140px;
-	border-radius: 15px;
-	overflow: hidden;
+	margin-top: 115px;
+}
+
+.baner-container > i {
+	position: absolute;
+	right: 10px;
+	top: 15px;
+	font-size: 25px;
+	color: #FFFFFF60;
+	color: rgba(229, 152, 155, 0.4);
 }
 
 .baner-container > .baner-capa {
@@ -174,19 +178,133 @@ body {
 .baner-container > .baner__info {
 	position: absolute;
 	bottom: 0;
-	padding: 0 30px 30px;
+	padding: 0 30px 40px;
+	color: var(--just-white);
 }
 
-.baner-container > .baner__info > h3 {
-	font-size: var(--title-h6);
+.baner-container > .baner__info > h1 {
+	font-size: var(--title-h3);
 }
 
 .baner-container > .baner__info > p {
-	font-size: 13px;
-	text-align: justify;
+	font-size: 15px;
 	font-weight: 500;
+	text-align: justify;
 }
 
+.baner-container > .button-reviews {
+	position: absolute;
+	left: calc(50% - 120px);
+	bottom: -25px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	padding: 15px;
+	gap: 5px;
+	background-color: var(--just-white);
+	box-shadow: 0px 4px 8px rgba(229, 152, 155, 0.4);
+	border-radius: 10px;
+}
+
+.baner-container > .button-reviews > p,
+.baner-container > .button-reviews > i {
+	font-size: var(--paragraphs);
+	color: var(--color-secondary);
+}
+
+.intro-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0 30px 80px;
+	text-align: justify;
+}
+
+.intro-container > img {
+	width: 90%;
+}
+
+.intro-container > h3 {
+	font-size: var(--title-h5);
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.intro-container > p {
+	font-size: var(--paragraphs);
+}
+
+.virtudes-container {
+	width: inherit;
+	height: auto;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 80px 30px 100px;
+	background-color: var(--color-primary);
+	color: var(--just-white);
+}
+
+.virtudes-container > img {
+	height: 65px;
+	position: absolute;
+	top: -38px;
+}
+
+.virtudes-container > h3 {
+	font-size: var(--title-h5);
+	text-align: center;
+}
+
+.virtudes-container > p {
+	margin: 30px 0 40px;
+	font-size: var(--paragraphs);
+	text-align: justify;
+}
+
+.virtudes-container > .articles-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+}
+
+.articles-container > .article-virtud {
+	padding: 15px;
+	background-color: var(--text-input-field);
+	border-radius: 10px;
+	box-shadow: 0px 4px 8px rgba(109, 104, 117, 0.8);
+}
+
+.articles-container > .article-virtud > .article-heading {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 15px;
+}
+
+.articles-container > .article-virtud > .article-heading > i,
+.articles-container > .article-virtud > .article-heading > h5 {
+	font-size: var(--title-h6);
+	font-weight: 600;
+	color: var(--color-secondary);
+}
+
+.articles-container > .article-virtud > p {
+	font-size: 14px;
+	color: var(--warm-black);
+}
+
+.picture-section {
+	width: inherit;
+	height: 600px;
+	background-image: url('https://central-gourmet.mx/cdn/shop/collections/clases_de_reposteria_central_gourmet.png?v=1651261878');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
 
 /* mucho por revisar */
 /* secciones blanco */

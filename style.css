@@ -1,0 +1,365 @@
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.mobile-header {
+	width: 100vw;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	/* z-index: 1; */
+	color: var(--just-white);
+	background-color: var(--color-primary);
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.mobile-header > nav {
+	width: inherit;
+	height: 115px;
+	display: flex;
+	padding: 12px 24px;
+}
+
+.mobile-header .navbar-left {
+	width: inherit;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row-reverse;
+	align-items: center;
+}
+
+.mobile-header .navbar-left i {
+	font-size: 35px;
+}
+
+.mobile-header .navbar-left > .brand {
+	width: 65%;
+	max-width: max-content;
+}
+
+.mobile-header .navbar-left .redirect-home {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: var(--just-white);
+	gap: 15px;
+}
+
+.mobile-header .navbar-left .redirect-home .logoImage {
+	height: 85px;
+}
+
+.mobile-header .navbar-left .redirect-home .logoName {
+	font-family: var(--fontMain);
+	font-size: var(--title-h4);
+	font-weight: normal;
+}
+
+.mobile-header .listNavigation,
+.mobile-header .navbar-right {
+	display: none;
+}
+
+#btn-menu {
+	display: none;
+}
+
+.mobile-menu {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 2;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 800ms linear;
+	background-color: var(--just-white);
+}
+
+#btn-menu:checked ~ .mobile-menu {
+	opacity: 1;
+	visibility: visible;
+}
+
+#btn-menu:checked ~ .mobile-menu .menu__content {
+	transform: translateX(0%);
+}
+
+.menu__content {
+	width: inherit;
+	height: inherit;
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 30px 24px 50px;
+	transition: all 600ms linear;
+	transform: translateX(100%);
+}
+
+.menu__content > label {
+	position: absolute;
+	top: 30px;
+	right: 20px;
+}
+
+.menu__content > label > i {
+	font-size: 35px;
+	color: var(--color-primary);
+}
+
+.menu__content > .topSection > .listNavigation,
+.menu__content > .bottomSection > .userAccount {
+	list-style: none;
+	border-bottom: 2px solid var(--color-primary);
+}
+
+.menu__content > .topSection h3 {
+	font-family: var(--fontMain);
+	font-size: var(--title-h2);
+	margin-bottom: 40px;
+}
+
+.menu__content > section > ul > li {
+	margin-bottom: 24px;
+}
+
+.menu__content > .topSection a,
+.menu__content > .bottomSection a {
+	margin-left: 30px;
+	font-size: var(--paragraphs);
+	font-weight: 600;
+	text-decoration: none;
+	color: var(--just-black);
+}
+
+.menu__content > .bottomSection > .userAccount .email {
+	font-size: 14px;
+	font-weight: 200;
+}
+
+.menu__content > .bottomSection > .userAccount .signOut {
+	color: var(--color-primary);
+}
+
+
+/* PENDIENTE REVISION */
+.baner-container {
+	width: 85vw;
+	height: 300px;
+	position: relative;
+	/* background-image: url('https://cdn.dribbble.com/userupload/5917176/file/original-dc2669c1cd728bb0306efebb7126498d.jpg?resize=1021x681&vertical=center'); */
+	background-image: url('./assets/images/pasteleria-w-chef.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: var(--just-white);
+	margin-top: 140px;
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+.baner-container > .baner-capa {
+	width: inherit;
+	height: inherit;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.baner-container > .baner__info {
+	position: absolute;
+	bottom: 0;
+	padding: 0 30px 30px;
+}
+
+.baner-container > .baner__info > h3 {
+	font-size: var(--title-h6);
+}
+
+.baner-container > .baner__info > p {
+	font-size: 13px;
+	text-align: justify;
+	font-weight: 500;
+}
+
+
+/* mucho por revisar */
+/* secciones blanco */
+.blanco.contenedor,
+.negro.contenedor {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: center; */
+	align-items: center;
+	height: auto;
+	width: 100vw;
+}
+
+.blanco h2,
+.negro h2 {
+	font-size: var(--title-h2);
+	margin: 40px 0 20px;
+}
+
+.blanco p,
+.negro p {
+	font-size: var(--paragraphs);
+	text-align: justify;
+}
+
+.info {
+	/* width: 80%; */
+	padding: 0 40px;
+}
+
+
+/* Slider */
+.frame-slider {
+	width: 200px;
+	height: 200px;
+	margin: 30px 0 60px;
+	overflow: hidden;
+	border: 4px solid var(--just-grey);
+	border-radius: 20px;
+	box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.9);
+}
+
+.resena .frame-slider {
+	margin: 0;
+}
+
+.resena .frame-slider:last-child {
+	margin: 10px 0 60px;
+}
+
+.review-slider {
+	width: 80%;
+	height: auto;
+	margin-bottom: 60px;
+	border: none;
+	border-radius: 0;
+	box-shadow: 0 0 0 0;
+}
+
+.frame-slider ul {
+	display: flex;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.resena .frame-slider ul {
+	width: 300%;
+	animation: slide 10s infinite alternate;
+}
+
+.frame-slider li {
+	width: 100%;
+	list-style: none;
+}
+
+.frame-slider img {
+	height: 100%;
+	width: 100%;
+}
+
+.frame-slider .name {
+	display: block;
+	font-size: 26px;
+}
+
+.frame-slider .review {
+	font-size: 16px;
+}
+
+.frame-slider .name,
+.frame-slider .review {
+	text-align: center;
+}
+
+.negro {
+	background-color: var(--color-primary);
+	color: var(--just-white);
+}
+
+.review-slider {
+	margin-top: 20px;
+}
+
+/*Definen los fotogramas de la secuencia de animacion
+se estable un inicio y un fin para cada animacion estos se miden en % y van de 0
+a 100*/
+@keyframes slide {
+
+	/* imagen1 */
+	0% {
+		margin-left: 0%;
+	}
+
+	/*inicio*/
+	30% {
+		margin-left: 0%;
+	}
+
+	/*fin*/
+	/* imagen2 */
+	35% {
+		margin-left: -100%;
+	}
+
+	65% {
+		margin-left: -100%;
+	}
+
+	/* imagen3 */
+	70% {
+		margin-left: -200%;
+	}
+
+	100% {
+		margin-left: -200%;
+	}
+}
+
+footer {
+	height: 10vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	background-color: var(--color-primary);
+	color: white;
+	font-size: 16px;
+	font-family: "Poppins", sans-serif;
+}
+
+.footer_contact {
+	display: none;
+}
+
+
+@media (max-width: 768px) {
+	.menu {
+		display: block;
+	}
+
+	.navbar-left ul {
+		display: none;
+	}
+
+	.navbar-email {
+		display: none;
+	}
+}
+
+@media (min-width: 425px) {
+	header .btn-menu>label {
+		margin-right: 0;
+	}
+}

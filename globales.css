@@ -1,0 +1,77 @@
+:root {
+	/* Colors */
+	--color-primary: #e5989b;
+	--color-secondary: #b5838d;
+	--dark-variation: #6d6875;
+	--color-variation: #ffb4a2;
+	--soft-variation: #ffcdb2;
+	--soft-white: bisque;
+	--warm-black: #282623;
+	--just-white: #FFF;
+	--just-grey: #C7C7C7;
+	--just-black: #000;
+	--text-input-field: #F7F7F7;
+	--hospital-green: #ACD9B2;
+
+	/* Fonts sizes */
+	--title-h1: 36px;
+	--title-h2: 32px;
+	--title-h3: 28px;
+	--title-h4: 26px;
+	--title-h5: 24px;
+	--title-h6: 22px;
+	--paragraphs: 16px;
+
+	/* Fonts*/
+	--fontMain: 'Kaushan Script', cursive;
+	--fontSecondary: 'Poppins', sans-serif;
+	--fontAlternative: 'Quicksand', sans-serif;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	/* font-size: 6.25%; */
+}
+
+body {
+	width: 100vw;
+	height: auto;
+	font-family: var(--fontSecondary);
+}
+
+/* @media (min-width: 375px) {
+	:root {
+		--title-h1: 40rem;
+		--title-h2: 28rem;
+		--title-h3: 26rem;
+		--title-h4: 24rem;
+		--title-h5: 22rem;
+		--title-h6: 20rem;
+		--paragraphs: 16rem;
+		--lineS-p: 20rem;
+		--lineS-h: 34rem;
+	}
+}
+
+@media (min-width: 768px) {
+	header>a {
+		font-size: var(--title-h2);
+	}
+
+	header img {
+		height: 15vh;
+	}
+}
+
+@media (min-width: 1024px) {
+	header {
+		padding-left: 20px;
+		justify-content: left;
+	}
+} */

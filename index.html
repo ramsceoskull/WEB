@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="./assets/icons/home-white.png" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="./globales.css">
+	<link rel="stylesheet" href="./style.css">
+	<title>Detalles con Corazón</title>
+</head>
+<body>
+	<!-- require './partials/header.php' -->
+	<header class="mobile-header tablet-header desktop-header">
+		<nav>
+			<section class="navbar-left">
+				<label for="btn-menu">
+					<i class="fa-solid fa-bars"></i>
+				</label>
+				<figure class="brand">
+					<a href="/home" class="redirect-home">
+						<img src="/assets/logo2.png" alt="Logo" class="logoImage">
+						<p class="logoName">Detalles con Corazón</p>
+					</a>
+				</figure>
+				<ul class="listNavigation">
+					<li class="listLinks"><a href="#" class="linkItem">item 1</a></li>
+					<li class="listLinks"><a href="#" class="linkItem">item 2</a></li>
+					<li class="listLinks"><a href="#" class="linkItem">item 3</a></li>
+					<li class="listLinks"><a href="#" class="linkItem">item 4</a></li>
+					<li class="listLinks"><a href="#" class="linkItem">item 5</a></li>
+				</ul>
+			</section>
+			<section class="navbar-right">
+				<ul class="listProfileInfo">
+					<li class="profileEmail">
+						<p class="email">jackiedoes@gmail.com</p>
+						<i class="fa-solid fa-angle-down"></i>
+					</li>
+					<li class="profileShopping">
+						<img src="/assets/white/bolsa-de-compra.png" alt="Carrito de compras">
+						<span>0</span>
+					</li>
+				</ul>
+			</section>
+		</nav>
+	</header>
+
+	<input type="checkbox" id="btn-menu">
+  <aside class="mobile-menu">
+		<nav class="menu__content">
+			<label for="btn-menu"><i class="fa-solid fa-circle-xmark"></i></label>
+			<section class="topSection">
+				<ul class="listNavigation">
+					<li><h3>PAGINAS</h3></li>
+					<li><a href="./admin/">ADMIN</a></li>
+					<li><a href="./login/">Iniciar sesion</a></li>
+					<li><a href="./signup/">Crear cuenta</a></li>
+					<li><a href="./catalogo/">Catalogo</a></li>
+					<li><a href="./product/">Producto</a></li>
+					<li><a href="./email/sent.html">Recuperar contraseña</a></li>
+				</ul>
+			</section>
+			<section class="bottomSection">
+				<ul class="userAccount">
+					<li><a href="/" class="email">jackiedoes@gmail.com</a></li>
+					<li><a href="/" class="signOut">Cerrar sesion</a></li>
+				</ul>
+			</section>
+		</nav>
+  </aside>
+
+	<figure class="baner-container">
+		<div class="baner-capa"></div>
+		<section class="baner__info">
+			<h3>Postres para todos</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum et quisquam aliquam reiciendis laboriosam esse exercitationem ipsum quam quis cumque?</p>
+		</section>
+	</figure>
+
+	<!-- <div class="splicer">
+		<section class="blanco contenedor">
+			<section class="mision info">
+				<h2 class="pt-2" >Mision</h2>
+				<p class="pt-5" >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate, hic accusantium. Omnis eveniet itaque laudantium minima quos nulla placeat natus.</p>
+			</section>
+			<div class="frame-slider">
+				<ul>
+					<li><img src="./assets/images/repostero.jpg" alt=""></li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="negro contenedor">
+			<section class="vision info">
+				<h2 class="pt-2" >Vision</h2>
+				<p class="pt-5" >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quisquam, velit cupiditate exercitationem saepe numquam dolorum. Officiis velit dolorum veritatis.</p>
+			</section>
+			<div class="frame-slider">
+				<ul>
+					<li><img src="./assets/images/macaron.jpg" alt=""></li>
+				</ul>
+			</div>
+		</section>
+	</div>
+
+	<section class="blanco contenedor resena">
+		<h2 class="pt-2">Reseñas</h2>
+		<div class="frame-slider">
+			<ul>
+				<li>
+					<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D" alt="" class="profilePicture">
+				</li>
+				<li>
+					<img src="https://www.bnl.gov/today/body_pics/2017/06/StephanHruszkewycz-hr.jpg" alt="" class="profilePicture">
+				</li>
+				<li>
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQEZrATmgHOi5ls0YCCQBTkocia_atSw0X-Q&usqp=CAU" alt="" class="profilePicture">
+				</li>
+			</ul>
+		</div>
+		<div class="frame-slider review-slider">
+			<ul>
+				<li>
+					<span class="name">Shai Gomez.</span>
+					<p class="review">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet ratione quae, dolorum quam similique voluptatem.</p>
+				</li>
+				<li>
+					<span class="name">Panfilo Perez</span>
+					<p class="review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, reiciendis accusamus culpa maiores in at?</p>
+				</li>
+				<li>
+					<span class="name">ramsceoskull</span>
+					<p class="review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus laborum hic eum soluta aspernatur magnam.</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<footer>
+		<p class="copy">Copyright 1998</p>
+		<p class="copy"> | </p>
+		<p class="copy">Detalles con Corazon</p>
+		<nav class="footer_contact"></nav>
+	</footer> -->
+
+	<script src="./script.js"></script>
+</body>
+</html>

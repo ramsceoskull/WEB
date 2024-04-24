@@ -13,6 +13,8 @@ body {
 	z-index: 1;
 	color: var(--just-white);
 	background-color: var(--color-primary);
+	border-bottom: 1px solid var(--color-secondary);
+	box-shadow: 0 20px 20px 5px rgba(181, 131, 141, 0.4);
 }
 
 .mobile-header > nav {
@@ -35,8 +37,7 @@ body {
 }
 
 .mobile-header .navbar-left > .brand {
-	width: 65%;
-	max-width: max-content;
+	width: max-content;
 }
 
 .mobile-header .navbar-left .redirect-home {
@@ -299,40 +300,11 @@ body {
 
 .picture-section {
 	width: inherit;
-	height: 600px;
+	height: 70vh;
 	background-image: url('https://central-gourmet.mx/cdn/shop/collections/clases_de_reposteria_central_gourmet.png?v=1651261878');
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
-}
-
-/* mucho por revisar */
-/* secciones blanco */
-.blanco.contenedor,
-.negro.contenedor {
-	display: flex;
-	flex-direction: column;
-	/* justify-content: center; */
-	align-items: center;
-	height: auto;
-	width: 100vw;
-}
-
-.blanco h2,
-.negro h2 {
-	font-size: var(--title-h2);
-	margin: 40px 0 20px;
-}
-
-.blanco p,
-.negro p {
-	font-size: var(--paragraphs);
-	text-align: justify;
-}
-
-.info {
-	/* width: 80%; */
-	padding: 0 40px;
 }
 
 
@@ -398,11 +370,6 @@ body {
 .frame-slider .name,
 .frame-slider .review {
 	text-align: center;
-}
-
-.negro {
-	background-color: var(--color-primary);
-	color: var(--just-white);
 }
 
 .review-slider {

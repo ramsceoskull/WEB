@@ -15,7 +15,14 @@ body {
 	background-color: var(--color-primary);
 	border-bottom: 1px solid var(--color-secondary);
 	box-shadow: 0 20px 20px 5px rgba(181, 131, 141, 0.4);
+	transition: .5s linear .3s;
 }
+.mobile-header.off {
+	transform: translateY(-300px);
+}
+/* .mobile-header.solid {
+	background-color: var(--color-secondary);
+} */
 
 .mobile-header > nav {
 	width: inherit;
@@ -417,7 +424,6 @@ a 100*/
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 5px;
 	color: white;
 	font-size: 16px;
 	background-color: var(--color-primary);
@@ -485,6 +491,7 @@ a 100*/
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-size: 14px;
 	gap: 7px;
 }
 

@@ -300,6 +300,7 @@ body {
 .picture-section {
 	width: inherit;
 	height: 70vh;
+	position: relative;
 	background-image: url('https://central-gourmet.mx/cdn/shop/collections/clases_de_reposteria_central_gourmet.png?v=1651261878');
 	background-position: center;
 	background-size: cover;

@@ -349,14 +349,16 @@ body {
 }
 
 .review > .dateOfReview {
+	width: 130px;
 	position: absolute;
 	top: -15px;
-	left: calc(50% - 60px);
+	left: calc(50% - 65px);
 	padding: 5px;
 	border-radius: 5px;
 	font-family: var(--fontAlternative);
 	font-weight: 500;
 	font-size: 12px;
+	text-align: center;
 	color: var(--text-input-field);
 	background-color: var(--color-secondary);
 }

@@ -183,7 +183,8 @@ body {
 }
 
 .banner-container > .banner__info > h1 {
-	font-size: var(--title-h3);
+	font-size: var(--title-h2);
+	font-family: var(--fontMain);
 }
 
 .banner-container > .banner__info > p {
@@ -226,7 +227,8 @@ body {
 }
 
 .intro-container > h3 {
-	font-size: var(--title-h5);
+	font-family: var(--fontMain);
+	font-size: var(--title-h3);
 	text-align: center;
 	margin-bottom: 20px;
 }
@@ -254,7 +256,8 @@ body {
 }
 
 .virtudes-container > h3 {
-	font-size: var(--title-h5);
+	font-family: var(--fontMain);
+	font-size: var(--title-h3);
 	text-align: center;
 }
 
@@ -287,9 +290,9 @@ body {
 
 .articles-container > .article-virtud > .article-heading > i,
 .articles-container > .article-virtud > .article-heading > h5 {
+	color: var(--color-secondary);
 	font-size: var(--title-h6);
 	font-weight: 600;
-	color: var(--color-secondary);
 }
 
 .articles-container > .article-virtud > p {
@@ -313,7 +316,8 @@ body {
 	padding: 40px 30px;
 }
 .reviews-container > h2 {
-	font-size: var(--title-h3);
+	font-family: var(--fontMain);
+	font-size: var(--title-h1);
 	text-align: center;
 }
 

@@ -313,7 +313,7 @@ body {
 .reviews-container {
 	width: 100vw;
 	height: auto;
-	padding: 40px 30px;
+	padding: 30px;
 }
 .reviews-container > h2 {
 	font-family: var(--fontMain);
@@ -335,7 +335,7 @@ body {
 
 .reviews-container > .carrousel > .review {
 	max-width: 320px;
-	height: 430px;
+	height: 370px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -371,7 +371,7 @@ body {
 }
 
 .review > .profilePicture {
-	width: 120px;
+	width: 100px;
 }
 
 .review > .profileUsername {

@@ -1,0 +1,11 @@
+.desktop-header {
+	transition: .5s linear .3s;
+}
+
+.desktop-header.off {
+	transform: translateY(-300px);
+}
+
+/* .desktop-header.solid {
+	background-color: var(--color-secondary);
+} */

@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="./globales.css">
 	<link rel="stylesheet" href="./style.css">
 	<title>Detalles con Corazón</title>
+	<script src="./script.js"></script>
 </head>
 <body>
 	<!-- require './partials/header.php' -->
@@ -74,10 +75,10 @@
 		</nav>
   </aside>
 
-	<figure class="baner-container">
+	<figure class="banner-container">
 		<i class="fa-solid fa-mobile"></i>
-		<div class="baner-capa"></div>
-		<section class="baner__info">
+		<div class="banner-capa"></div>
+		<section class="banner__info">
 			<h1>Postres para todos</h1>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum et quisquam aliquam reiciendis laboriosam esse exercitationem ipsum quam quis cumque?</p>
 		</section>
@@ -125,10 +126,117 @@
 	<figure class="picture-section"></figure>
 
 	<!-- section.reviews-container>div.carrousel>article.review*3>img.profilePicture+p.profileUsername+div.reviewNote+p.reviewDetail+p.sinceInfo{Cliente desde }>span.clientLoyalty{ | 202$} -->
-	<!-- <i class="fa-solid fa-star"></i>
-	<i class="fa-regular fa-star"></i> -->
 
-	<footer id="reviews" class="footer-container">
+	<section id="reviews" class="reviews-container">
+		<h2>Reseñas</h2>
+		<div class="carrousel">
+			<i class="fa-solid fa-angle-left" onclick="handleChangeReview()"></i>
+			<article id="1" class="review">
+				<p class="dateOfReview">11 de Enero <span>| 2014</span></p>
+				<img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="" class="profilePicture">
+				<p class="profileUsername">User 1</p>
+				<div class="reviewNote">
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+				</div>
+				<p class="reviewDetail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque similique mollitia, sapiente inventore autem voluptatum.</p>
+				<!-- <p class="sinceInfo">Cliente desde <span class="clientLoyalty">| 2021</span></p> -->
+			</article>
+			<!-- <article id="2" class="review">
+				<p class="dateOfReview">15 de Febrero <span>| 2015</span></p>
+				<img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="" class="profilePicture">
+				<p class="profileUsername">User 2</p>
+				<div class="reviewNote">
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-regular fa-star"></i>
+				</div>
+				<p class="reviewDetail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique ipsum assumenda molestias nobis consequuntur harum?</p>
+			</article> -->
+			<article id="3" class="review">
+				<p class="dateOfReview">20 de Marzo <span>| 2016</span></p>
+				<img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="" class="profilePicture">
+				<p class="profileUsername">User 3</p>
+				<div class="reviewNote">
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+				</div>
+				<p class="reviewDetail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, error. Officia eaque culpa odio et!</p>
+				<!-- <p class="sinceInfo">Cliente desde <span class="clientLoyalty">| 2023</span></p> -->
+			</article>
+			<i class="fa-solid fa-angle-right" onclick="handleChangeReview()"></i>
+		</div>
+	</section>
+
+	<!-- <section class="main-tables-container">
+        <div class="main__left-button invisible" onclick="handleChangeTable()">
+          <span></span>
+        </div>
+        <div class="main-table" id="currenciesCard">
+          <h3 class="currency-table--title">Monedas</h3>
+          <div class="currency-table--container">
+            <table>
+              <tbody><tr>
+                <td class="table__top-left">Bitcoin</td>
+                <td class="table__top-right table__right">$ 1.96<span class="down"></span></td>
+              </tr>
+              <tr>
+                <td>Ethereum</td>
+                <td class="table__right">$ 0.07<span class="up"></span></td>
+              </tr>
+              <tr>
+                <td>Ripple</td>
+                <td class="table__right">$ 2.15<span class="down"></span></td>
+              </tr>
+              <tr>
+                <td class="table__bottom-left">Stellar</td>
+                <td class="table__bottom-right table__right">$ 4.96<span class="down"></span></td>
+              </tr>
+            </tbody></table>
+          </div>
+          <div class="currency-table--update">
+            <p><b>Actualizado:</b> 04 Sept 23:45</p>
+          </div>
+        </div>
+
+        <div class="main-table hidden" id="commissionsCard">
+          <h3 class="commissions-table--title">Comisiones</h3>
+          <div class="commissions-table--container">
+            <table>
+              <tbody><tr>
+                <td class="table__top-left">Bitrade</td>
+                <td class="table__top-right table__right">$ 12.96<span class="down"></span></td>
+              </tr>
+              <tr>
+                <td>Bitpreco</td>
+                <td class="table__right">$ 13.07<span class="up"></span></td>
+              </tr>
+              <tr>
+                <td>Novadax</td>
+                <td class="table__right">$ 13.15<span class="down"></span></td>
+              </tr>
+              <tr>
+                <td class="table__bottom-left">Coinext</td>
+                <td class="table__bottom-right table__right">$ 14.96<span class="down"></span></td>
+              </tr>
+            </tbody></table>
+          </div>
+          <div class="commissions-table--update">
+            <p><b>Actualizado:</b> 04 Sept 23:48</p>
+          </div>
+        </div>
+        <div class="main__right-button" onclick="handleChangeTable()"><span></span></div>
+      </section> -->
+
+	<footer class="footer-container">
 		<a href="#top" class="linkToTop">
 			<i class="fa-solid fa-caret-up"></i>
 			<br>Regresar al Inicio
@@ -156,53 +264,12 @@
 				</div>
 			</figure>
 			<div class="specialThanks">
-				<p class="admin">Hecho con amor | <span>admin@gmail.com</span></p>
+				<p class="admin">Hecho con amor | <a href="mailto:a22310355@ceti.mx">admin@gmail.com</a></p>
 				<p class="copyrightDetail">Todos los derechos reservados</p>
 			</div>
 		</section>
 	</footer>
 
-
-	<!-- <section class="blanco contenedor resena">
-		<h2 class="pt-2">Reseñas</h2>
-		<div class="frame-slider">
-			<ul>
-				<li>
-					<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D" alt="" class="profilePicture">
-				</li>
-				<li>
-					<img src="https://www.bnl.gov/today/body_pics/2017/06/StephanHruszkewycz-hr.jpg" alt="" class="profilePicture">
-				</li>
-				<li>
-					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQEZrATmgHOi5ls0YCCQBTkocia_atSw0X-Q&usqp=CAU" alt="" class="profilePicture">
-				</li>
-			</ul>
-		</div>
-		<div class="frame-slider review-slider">
-			<ul>
-				<li>
-					<span class="name">Shai Gomez.</span>
-					<p class="review">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet ratione quae, dolorum quam similique voluptatem.</p>
-				</li>
-				<li>
-					<span class="name">Panfilo Perez</span>
-					<p class="review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, reiciendis accusamus culpa maiores in at?</p>
-				</li>
-				<li>
-					<span class="name">ramsceoskull</span>
-					<p class="review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus laborum hic eum soluta aspernatur magnam.</p>
-				</li>
-			</ul>
-		</div>
-	</section>
-
-	<footer>
-		<p class="copy">Copyright 1998</p>
-		<p class="copy"> | </p>
-		<p class="copy">Detalles con Corazon</p>
-		<nav class="footer_contact"></nav>
-	</footer> -->
-
-	<script src="./script.js"></script>
+	<!-- <script src="./script.js"></script> -->
 </body>
 </html>

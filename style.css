@@ -15,14 +15,7 @@ body {
 	background-color: var(--color-primary);
 	border-bottom: 1px solid var(--color-secondary);
 	box-shadow: 0 20px 20px 5px rgba(181, 131, 141, 0.4);
-	transition: .5s linear .3s;
 }
-.mobile-header.off {
-	transform: translateY(-300px);
-}
-/* .mobile-header.solid {
-	background-color: var(--color-secondary);
-} */
 
 .mobile-header > nav {
 	width: inherit;
@@ -156,7 +149,7 @@ body {
 }
 
 
-.baner-container {
+.banner-container {
 	width: inherit;
 	height: 400px;
 	position: relative;
@@ -168,7 +161,7 @@ body {
 	margin-top: 115px;
 }
 
-.baner-container > i {
+.banner-container > i {
 	position: absolute;
 	right: 10px;
 	top: 15px;
@@ -176,30 +169,30 @@ body {
 	color: rgba(229, 152, 155, 0.4);
 }
 
-.baner-container > .baner-capa {
+.banner-container > .banner-capa {
 	width: inherit;
 	height: inherit;
 	background-color: rgba(0, 0, 0, 0.3);
 }
 
-.baner-container > .baner__info {
+.banner-container > .banner__info {
 	position: absolute;
 	bottom: 0;
 	padding: 0 30px 40px;
 	color: var(--just-white);
 }
 
-.baner-container > .baner__info > h1 {
+.banner-container > .banner__info > h1 {
 	font-size: var(--title-h3);
 }
 
-.baner-container > .baner__info > p {
+.banner-container > .banner__info > p {
 	font-size: 15px;
 	font-weight: 500;
 	text-align: justify;
 }
 
-.baner-container > .button-reviews {
+.banner-container > .button-reviews {
 	position: absolute;
 	left: calc(50% - 120px);
 	bottom: -25px;
@@ -213,8 +206,8 @@ body {
 	border-radius: 10px;
 }
 
-.baner-container > .button-reviews > p,
-.baner-container > .button-reviews > i {
+.banner-container > .button-reviews > p,
+.banner-container > .button-reviews > i {
 	font-size: var(--paragraphs);
 	color: var(--color-secondary);
 }
@@ -313,9 +306,93 @@ body {
 	background-repeat: no-repeat;
 }
 
+.reviews-container {
+	width: 100vw;
+	height: auto;
+	padding: 40px 30px;
+}
+.reviews-container > h2 {
+	font-size: var(--title-h3);
+	text-align: center;
+}
+
+.reviews-container > .carrousel {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 30px 0;
+	gap: 15px;
+}
+.reviews-container > .carrousel > i {
+	font-size: 24px;
+}
+
+.reviews-container > .carrousel > .review {
+	max-width: 320px;
+	height: 430px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	padding: 30px 25px 50px;
+	border-radius: 10px;
+	background-color: var(--text-input-field);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+}
+.reviews-container > .carrousel > .review.hidden {
+	display: none;
+}
+.reviews-container > .carrousel > .invisible {
+	visibility: hidden;
+}
+
+.review > .dateOfReview {
+	position: absolute;
+	top: -15px;
+	left: calc(50% - 60px);
+	padding: 5px;
+	border-radius: 5px;
+	font-family: var(--fontAlternative);
+	font-weight: 500;
+	font-size: 12px;
+	color: var(--text-input-field);
+	background-color: var(--color-secondary);
+}
+.review > .dateOfReview > span {
+	font-weight: bold;
+}
+
+.review > .profilePicture {
+	width: 120px;
+}
+
+.review > .profileUsername {
+	width: 100%;
+	margin-top: 10px;
+	padding-top: 10px;
+	font-weight: 500;
+	font-size: var(--title-h6);
+	text-align: center;
+	border-top: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.review > .reviewNote {
+	margin: -5px 0 15px;
+}
+.review > .reviewNote > i {
+	color: var(--color-secondary);
+}
+
+.review > .reviewDetail {
+	text-align: justify;
+	font-size: 15px;
+}
+
+
 
 /* Slider */
-.frame-slider {
+/* .frame-slider {
 	width: 200px;
 	height: 200px;
 	margin: 30px 0 60px;
@@ -380,7 +457,7 @@ body {
 
 .review-slider {
 	margin-top: 20px;
-}
+} */
 
 /*Definen los fotogramas de la secuencia de animacion
 se estable un inicio y un fin para cada animacion estos se miden en % y van de 0
@@ -437,7 +514,7 @@ a 100*/
 	font-size: var(--paragraphs);
 	color: var(--warm-black);
 	background-color: var(--just-white);
-	border-bottom: 1px solid rgba(109, 104, 117, .8);
+	border: 1px solid rgba(109, 104, 117, .8);
 }
 
 .footer-container > .linkToTop > i {
@@ -463,7 +540,11 @@ a 100*/
 }
 .footer-container > .payment-methods > i,
 .footer-container > .socialMedia > i {
-	font-size: 28px;
+	font-size: 34px;
+}
+
+.footer-container > .socialMedia {
+	display: none;
 }
 
 .footer-container > .bottom-info {
@@ -480,7 +561,7 @@ a 100*/
 	flex-direction: column;
 	align-items: center;
 	padding: 10px;
-	gap: 15px;
+	gap: 5px;
 }
 
 .footer-container > .bottom-info > .logoRound > img {
@@ -491,7 +572,7 @@ a 100*/
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 14px;
+	font-size: 10px;
 	gap: 7px;
 }
 
@@ -500,10 +581,15 @@ a 100*/
 	font-weight: 400;
 }
 
-.specialThanks > .admin > span {
+.specialThanks > .admin > a {
 	font-size: 13px;
 	font-weight: 200;
-	text-decoration: underline;
+	letter-spacing: 1px;
+	color: var(--just-white);
+}
+
+.specialThanks > .admin {
+	margin-bottom: 15px;
 }
 
 

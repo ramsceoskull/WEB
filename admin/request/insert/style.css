@@ -1,0 +1,160 @@
+body {
+	font-family: "Quicksand", sans-serif;
+}
+
+header {
+	width: 100vw;
+	height: 100px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	color: var(--just-white);
+	font-family: var(--fontMain);
+	background-color: var(--color-primary);
+}
+
+header nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 24px;
+	width: 100vw;
+	/* border-bottom: 1px solid var(--); */
+}
+
+header .brand {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+header label>svg>path {
+	fill: var(--just-white);
+}
+
+header .btn-menu>label {
+	margin: 5px 0 0 10px;
+}
+
+header .btn-menu>label>svg {
+	height: 25px;
+}
+
+.logo {
+	height: 65px;
+	margin-right: 10px;
+}
+
+.logoName {
+	font-size: var(--title-h4);
+	font-weight: normal;
+}
+
+#btn-menu {
+	display: none;
+}
+
+.menu,
+.navbar-shopping-cart {
+	display: none;
+}
+
+.navbar-left ul,
+.navbar-right ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	height: 60px;
+}
+
+.navbar-left {
+	display: flex;
+	align-items: center;
+	width: inherit;
+}
+
+.navbar-right,
+.navbar-left>ul {
+	display: none;
+}
+
+.form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 100px;
+	padding: 10px 30px 0;
+}
+
+.title {
+	font-size: var(--title-h2);
+	font-weight: bolder;
+	margin: 40px 0 50px;
+	text-align: center;
+}
+
+.split80,
+.split-half {
+	display: flex;
+	width: 100%;
+}
+
+.split80>div,
+.split-half>div {
+	display: flex;
+	flex-direction: column;
+}
+
+.split80>div:first-child {
+	width: calc(80% - 20px);
+	margin-right: 20px;
+}
+
+.split80>div:last-child {
+	width: 20%;
+}
+
+.split-half>div {
+	width: calc(50% - 10px);
+	/* margin-right: 20px; */
+}
+
+.split-half>div:last-child {
+	margin-left: 20px;
+}
+
+.label {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 4px;
+}
+
+.input {
+	background-color: var(--text-input-field);
+	border: none;
+	border-radius: 8px;
+	height: 50px;
+	font-size: var(--paragraphs);
+	padding: 8px;
+	margin-bottom: 22px;
+}
+
+.input-description {
+	height: 200px;
+}
+
+.primary-button {
+	background-color: var(--color-primary);
+	border-radius: 8px;
+	border: none;
+	color: var(--just-white);
+	width: 100%;
+	font-size: 18px;
+	font-weight: bold;
+	height: 50px;
+}

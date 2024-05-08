@@ -1,22 +1,43 @@
 <?php
-	/* session_start();
 	include "../admin/php/connection.php";
+	session_start();
 
-	if(!empty($_POST['email']) && !empty($_POST['passsword'])) {
-		$records = $connection->prepare('SELECT id, correo, pass FROM usuario WHERE correo=:email');
-		$records->bind_param(':email', $_POST['email']);
-		$records->execute();
-		$results = $records->fetch(PDO::FETCH_ASSOC);
+	if(isset($_SESSION['id'])) {
+		header('Location: ../catalogo/');
+		exit;
+	}
 
+	if(!empty($_POST['email']) && !empty($_POST['password'])) {
+		$email = $_POST['email'];
+		$pass = $_POST['password'];
 		$message = '';
 
-		if(count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
-			$_SESSION['user_id'] = $results['id'];
-			header('Location: ../catalogo/');
-		} else {
-			$message = 'Sorry, those credentials do not match';
-		}
-	} */
+		$sql = mysqli_query($connection, "SELECT * FROM usuario WHERE email = '$email'");
+
+		if($sql) {
+			$numRows = mysqli_num_rows($sql);
+			if($numRows > 0) {
+				while($row = mysqli_fetch_array($sql)) {
+					if($row['pass'] == $pass) {
+						$_SESSION['id'] = $row['id'];
+
+						if($row['rol'] == 0) {
+							$_SESSION['rol'] = 'ADMIN';
+							header('Location: ../admin/');
+						} elseif ($row['rol'] == 2) {
+							$_SESSION['rol'] = 'CLIENTE';
+							header('Location: ../catalogo/');
+						}
+
+						exit;
+					}
+				}
+				$message = 'Error al ingresar la contraseña';
+			} else
+				$message = 'No se encontro el correo especificado :(';
+		} else
+			$message = 'Error al ejecutar consulta: '.mysqli_error($connection);
+	}
 
 ?>
 
@@ -32,30 +53,31 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
 	<link rel="shortcut icon" href="../assets/icons/login.png" type="image/x-icon">
-	<link rel="stylesheet" href="./style.css">
-	<link rel="stylesheet" href="./styleL.css" media="(min-width: 768px)">
+	<link rel="stylesheet" href="./style.css?ts=<?=time()?>">
+	<link rel="stylesheet" href="./styleL.css?ts=<?=time()?>" media="(min-width: 768px)">
   <title>Inicia sesion | Detalles con Corazon</title>
 </head>
 <body>
+
+	<?php if(!empty($message)) : ?>
+		<p class="message"><?= $message ?></p>
+	<?php endif; ?>
+
 	<section class="form-container">
 		<div class="logo-container">
-			<img src="../assets/logo.png" alt="logo" class="logo">
+			<img src="../assets/logo2.png" alt="logo" class="logo">
 			<p class="logoName">Detalles con Corazon</p>
 		</div>
-		<form action="../catalogo/" method="post" class="form">
+		<form action="./index.php" method="post" class="form">
 			<h1 class="title">Iniciar sesion</h1>
 			<label for="email" class="label">Correo electronico</label>
-			<input type="email" id="email" name="email" placeholder="ramses.lanceno@alumnos.udg.mx" class="input input-email" autocomplete="email">
+			<input type="email" id="email" name="email" placeholder="ramses.lanceno@alumnos.udg.mx" class="input input-email" autocomplete="email" required>
 
 			<label for="password" class="label">Contraseña</label>
-			<input type="password" id="password" name="password" placeholder="*********" class="input input-password">
+			<input type="password" id="password" name="password" placeholder="*********" class="input input-password" required>
 
 			<input type="submit" value="Iniciar sesion" class="primary-button login-button">
 			<a href="../email/sent.html">Olvide mi contraseña</a>
-
-			<?php // if(!empty($message)) : ?>
-				<p><?//= $message ?></p>
-			<?php // endif; ?>
 
 			<a href="../signup/" class="secondary-button signup-button">Registrarte</a>
 		</form>

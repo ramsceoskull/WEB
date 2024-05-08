@@ -1,3 +1,26 @@
+<?php
+	require "../admin/php/connection.php";
+
+	$message = '';
+
+	if(!empty($_POST['nombre']) && !empty($_POST['age']) && !empty($_POST['apellidoP']) && !empty($_POST['apellidoM']) && !empty($_POST['email']) && !empty($_POST['password'])) {
+		$name = $_POST['nombre'];
+		$age = $_POST['age'];
+		$apellidoP = $_POST['apellidoP'];
+		$apellidoM = $_POST['apellidoM'];
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+
+		$sql = mysqli_query($connection, "INSERT INTO usuario(nombres, apellidoP, apellidoM, edad, email, pass, rol) VALUES ('$name', '$apellidoP', '$apellidoM', '$age', '$email', '$password', 2)");
+
+		if($sql)
+			$message = 'Se creo el usuario correctamente';
+		else
+			$message = 'Error al registrar usuario';
+	}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,49 +33,55 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
 	<link rel="shortcut icon" href="../assets/icons/registrarse.png" type="image/x-icon">
-	<link rel="stylesheet" href="./style.css">
-	<link rel="stylesheet" href="./styleL.css" media="(min-width: 1024px)">
+	<link rel="stylesheet" href="../globales.css?ts=<?=time()?>">
+	<link rel="stylesheet" href="./style.css?ts=<?=time()?>">
+	<link rel="stylesheet" href="./styleL.css?ts=<?=time()?>" media="(min-width: 1024px)">
   <title>Registrate | Detalles con Corazon</title>
 </head>
 <body>
+
+	<?php if(!empty($message)): ?>
+		<p class="message"><?= $message ?></p>
+	<?php endif; ?>
+
 	<section class="form-container">
 		<div class="logo-container">
-			<img src="../assets/logo.png" alt="logo" class="logo">
+			<img src="../assets/logo2.png" alt="logo" class="logo">
 			<p class="logoName">Detalles con Corazon</p>
 		</div>
-		<form action="../admin/php/insertUser.php" method="post" class="form">
-			<h1 class="title">My account</h1>
+		<form action="./index.php" method="post" class="form">
+			<h1 class="title">Mi cuenta</h1>
 			<section class="split80">
 				<div>
-					<label for="name" class="label">Nombre(s)</label>
-					<input type="text" id="name" name="nombre" placeholder="Ramsés Alejandro" class="input input-name" required>
+					<label for="name" class="label">Nombre(s) :</label>
+					<input type="text" id="name" name="nombre" placeholder="Ramsés Alejandro" class="input input-name" autocomplete="given-name" required>
 				</div>
 
 				<div>
-					<label for="age" class="label">Edad</label>
+					<label for="age" class="label">Edad :</label>
 					<input type="number" id="age" name="age" placeholder="20" class="input input-age" required>
 				</div>
 			</section>
 
 			<section class="split-half">
 				<div>
-					<label for="apellidoP" class="label">Apellido 1</label>
-					<input type="text" id="apellidoP" name="apellidoP" placeholder="Lopez" class="input input-lastname" required>
+					<label for="apellidoP" class="label">Apellido 1 :</label>
+					<input type="text" id="apellidoP" name="apellidoP" placeholder="Lopez" class="input input-lastname" autocomplete="additional-name" required>
 				</div>
 
 				<div>
-					<label for="apellidoM" class="label">Apellido 2</label>
-					<input type="text" id="apellidoM" name="apellidoM" placeholder="Anceno" class="input input-lastname" required>
+					<label for="apellidoM" class="label">Apellido 2 :</label>
+					<input type="text" id="apellidoM" name="apellidoM" placeholder="Anceno" class="input input-lastname" autocomplete="cc-additional-name" required>
 				</div>
 			</section>
 
-			<label for="email" class="label">Email address</label>
-			<input type="email" id="email" name="email" placeholder="ramses.social0@gmail.com" class="input input-email" required>
+			<label for="email" class="label">Correo electronico :</label>
+			<input type="email" id="email" name="email" placeholder="ramses.social0@gmail.com" class="input input-email" autocomplete="email" required>
 
-			<label for="password" class="label">Password</label>
-			<input type="password" id="password" name="password" placeholder="*********" class="input input-password" required>
+			<label for="password" class="label">Contraseña :</label>
+			<input type="password" id="password" name="password" placeholder="*********" class="input input-password" autocomplete="new-password" required>
 
-			<input type="submit" value="Crear usuario" class="primary-button signup-button">
+			<input type="submit" value="Crear cuenta" class="primary-button signup-button">
 			<p class="member">
 				<span>Ya tienes una cuenta?</span>
 				<a href="../login/">Inicia sesion</a>

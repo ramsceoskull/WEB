@@ -20,8 +20,9 @@ body {
 
 .mobile-header>nav {
 	width: inherit;
-	height: 115px;
+	height: 215px;
 	display: flex;
+	flex-direction: column;
 	padding: 12px 18px;
 }
 
@@ -152,102 +153,6 @@ body {
 
 
 
-.mainLayout {
-	width: 100%;
-	height: auto;
-	margin: 115px 0;
-}
-
-.mainLayout .title {
-	font-size: var(--title-h1);
-	text-align: center;
-	padding: 20px 0 10px;
-}
-
-.cardsContainer {
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin-top: 20px;
-	gap: 30px;
-}
-
-.cardProduct {
-	width: 250px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding-bottom: 20px;
-	background-color: var(--text-input-field);
-	border-radius: 15px;
-	overflow: hidden;
-	box-shadow: 2px 0 10px 1px rgba(0, 0, 0, .6);
-}
-
-.cardProduct > .productImage {
-	position: relative;
-	width: inherit;
-	height: 200px;
-	background-size: cover;
-}
-/* .cardProduct > .productImage > input[type="submit"] {
-	width: 45px;
-	height: 45px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	border: none;
-	top: 8px;
-	right: 8px;
-	padding: 5px;
-	border-radius: 50px;
-	background-size: contain;
-	background-color: var(--dark-variation);
-	border: 2px solid transparent;
-	transition: .9s;
-}
-.cardProduct>.productImage>input[type="submit"]:hover {
-	cursor: pointer;
-	border: 2px solid #FFF;
-}
-#email {
-	display: none;
-} */
-
-.cardProduct > .productName {
-	font-size: var(--title-h6);
-	font-weight: 600;
-	margin: 10px 0;
-	text-align: center;
-}
-
-.cardProduct > .productDescription {
-	font-size: 12px;
-	text-align: justify;
-	padding: 0 20px;
-	margin-bottom: 5px;
-}
-
-.cardProduct > .infoDetail {
-	display: flex;
-	width: inherit;
-	justify-content: space-between;
-	padding: 0 20px;
-}
-.infoDetail > .existencias {
-	font-size: 12px;
-}
-.infoDetail>.existencias > span {
-	color: green;
-	font-weight: 600;
-}
-.infoDetail>.price {
-	font-size: var(--paragraphs);
-	font-weight: 800;
-}
-
 
 
 .footer-container {
@@ -348,25 +253,4 @@ body {
 
 .specialThanks>.admin {
 	margin-bottom: 15px;
-}
-
-
-@media (max-width: 768px) {
-	.menu {
-		display: block;
-	}
-
-	.navbar-left ul {
-		display: none;
-	}
-
-	.navbar-email {
-		display: none;
-	}
-}
-
-@media (min-width: 425px) {
-	header .btn-menu>label {
-		margin-right: 0;
-	}
 }

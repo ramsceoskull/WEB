@@ -55,15 +55,16 @@ body {
 .logo-container {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	margin-bottom: 48px;
+	gap: 4px;
+}
+.logo {
+	height: 80px;
 }
 .logoName {
 	font-family: "Kaushan Script", cursive;
 	font-size: var(--title-h3);
-}
-.logo {
-	height: 80px;
-	margin-right: 20px;
 }
 
 .title {
@@ -92,11 +93,9 @@ body {
 	margin-bottom: 24px;
 }
 
-.email-image svg {
-	width: 80px;
-}
-.email-image svg path {
-	fill: var(--color-primary);
+.email-image > i {
+	font-size: 80px;
+	color: var(--color-primary);
 }
 
 .resend {

@@ -3,9 +3,120 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../assets/icons/home-white.png" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="../globales.css">
+	<link rel="stylesheet" href="./style.css">
+	<title>Home | Detalles con Corazón</title>
 	<title>Document</title>
 </head>
 <body>
+	<label for="" id="top"></label>
+	<header class="mobile-header tablet-header desktop-header">
+		<nav>
+			<section class="navbar-left">
+				<div class="icons-container">
+					<i class="fa-solid fa-user"></i>
+					<!-- <i class="fa-solid fa-bag-shopping"></i> -->
+					<label for="btn-menu">
+						<i class="fa-solid fa-bars"></i>
+					</label>
+				</div>
+				<figure class="brand">
+					<a href="/home" class="redirect-home">
+						<img src="../assets/logo2.png" alt="Logo" class="logoImage">
+						<!-- <p class="logoName">Detalles con Corazón</p> -->
+					</a>
+				</figure>
+				<ul class="listNavigation">
+					<li class="listLinks"><a href="#" class="linkItem">item 1</a></li>
+					<li class="listLinks"><a href="#" class="linkItem">item 2</a></li>
+					<li class="listLinks"><a href="#" class="linkItem">item 3</a></li>
+					<li class="listLinks"><a href="#" class="linkItem">item 4</a></li>
+					<li class="listLinks"><a href="#" class="linkItem">item 5</a></li>
+				</ul>
+			</section>
+			<section class="navbar-right">
+				<ul class="listProfileInfo">
+					<li class="profileEmail">
+						<p class="email">jackiedoes@gmail.com</p>
+						<i class="fa-solid fa-angle-down"></i>
+					</li>
+					<li class="profileShopping">
+						<img src="/assets/white/bolsa-de-compra.png" alt="Carrito de compras">
+						<span>0</span>
+					</li>
+				</ul>
+			</section>
+			<section class="welcomeUser">
+				<h2 class="greeting">Bienvenido User</h2>
+				<p class="welcomeMessage">Vamos a encontrar el mejor postre para ti. :)</p>
+			</section>
+		</nav>
+	</header>
 
+	<input type="checkbox" id="btn-menu">
+  <aside class="mobile-menu">
+		<nav class="menu__content">
+			<label for="btn-menu"><i class="fa-solid fa-circle-xmark"></i></label>
+			<section class="topSection">
+				<ul class="listNavigation">
+					<li><h3>PAGINAS</h3></li>
+					<li><a href="./admin/">ADMIN</a></li>
+					<li><a href="./login/">Iniciar sesion</a></li>
+					<li><a href="./signup/">Crear cuenta</a></li>
+					<li><a href="./catalogo/">Catalogo</a></li>
+					<li><a href="./product/">Producto</a></li>
+					<li><a href="./email/sent.html">Recuperar contraseña</a></li>
+				</ul>
+			</section>
+			<section class="bottomSection">
+				<ul class="userAccount">
+					<li><a href="/" class="email">jackiedoes@gmail.com</a></li>
+					<li><a href="/" class="signOut">Cerrar sesion</a></li>
+				</ul>
+			</section>
+		</nav>
+  </aside>
+
+
+
+
+	<footer class="footer-container">
+		<a href="#top" class="linkToTop">
+			<i class="fa-solid fa-caret-up"></i>
+			<br>Regresar al Inicio
+		</a>
+		<p class="creatorName">Ramsés Alejandro López Anceno</p>
+		<section class="payment-methods">
+			<i class="fa-brands fa-cc-visa"></i>
+			<i class="fa-brands fa-cc-paypal"></i>
+			<i class="fa-solid fa-gift"></i>
+			<i class="fa-brands fa-cc-amex"></i>
+			<i class="fa-brands fa-cc-mastercard"></i>
+		</section>
+		<section class="socialMedia">
+			<i class="fa-brands fa-facebook"></i>
+			<i class="fa-brands fa-telegram"></i>
+			<i class="fa-brands fa-spotify"></i>
+			<i class="fa-brands fa-github"></i>
+		</section>
+		<section class="bottom-info">
+			<figure class="logoRound">
+				<img src="../assets/logoWhite.png" alt="Logo Emblema">
+				<div class="copyrightYear">
+					<i class="fa-regular fa-copyright"></i>
+					<p>2024</p>
+				</div>
+			</figure>
+			<div class="specialThanks">
+				<p class="admin">Hecho con amor | <a href="mailto:a22310355@ceti.mx">admin@gmail.com</a></p>
+				<p class="copyrightDetail">Todos los derechos reservados</p>
+			</div>
+		</section>
+	</footer>
 </body>
 </html>

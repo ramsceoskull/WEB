@@ -5,7 +5,7 @@
 	$password = "";
 
 	$connection = mysqli_connect($server, $user, $password, $database);
-	if ($connection)
-		echo "Conexion exitosa";
-	else
+	if (!$connection)
 		die("Falla en la conexion".mysqli_connect_error());
+
+// echo "Conexion exitosa";

@@ -28,6 +28,10 @@
 	--fontAlternative: 'Quicksand', sans-serif;
 }
 
+text {
+	display: none;
+}
+
 * {
 	margin: 0;
 	padding: 0;

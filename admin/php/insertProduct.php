@@ -10,7 +10,7 @@
 	$sql = mysqli_query($connection, "INSERT INTO Producto(nombre, descripcion, existencia, precio, fotoURL) VALUES ('$name', '$description', '$existencias', '$price', '$url')");
 
 	if($sql) {
-		header('Location: ../insert/product.html');
+		header('Location: ../request/insert/');
 		exit;
 	}
 	else

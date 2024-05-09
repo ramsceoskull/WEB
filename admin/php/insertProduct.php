@@ -7,10 +7,10 @@
 	$existencias = $_POST['existencias'];
 	$price = $_POST['precio'];
 
-	$sql = mysqli_query($connection, "INSERT INTO Producto(nombre, descripcion, existencia, precio, fotoURL) VALUES ('$name', '$description', '$existencias', '$price', '$url')");
+	$sql = mysqli_query($connection, "INSERT INTO producto (nombre, descripcion, existencia, precio, fotoURL) VALUES ('$name', '$description', '$existencias', '$price', '$url')");
 
 	if($sql) {
-		header('Location: ../insert/product.html');
+		header('Location: ../insert/');
 		exit;
 	}
 	else

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2024 a las 22:47:51
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Host: 127.0.0.1
+-- Generation Time: May 09, 2024 at 02:23 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `reposteria`
+-- Database: `reposteria`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `producto`
+-- Table structure for table `producto`
 --
 
 CREATE TABLE `producto` (
@@ -34,10 +34,10 @@ CREATE TABLE `producto` (
   `existencia` int(11) DEFAULT NULL,
   `precio` int(11) DEFAULT NULL,
   `fotoURL` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `producto`
+-- Dumping data for table `producto`
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `existencia`, `precio`, `fotoURL`) VALUES
@@ -53,59 +53,60 @@ INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `existencia`, `precio`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
-  `nombres` varchar(255) DEFAULT NULL,
-  `apellidoP` varchar(255) DEFAULT NULL,
-  `apellidoM` varchar(255) DEFAULT NULL,
-  `edad` int(3) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `pass` varchar(30) DEFAULT NULL,
-  `rol` int(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `nombres` varchar(255) NOT NULL,
+  `apellidoP` varchar(255) NOT NULL,
+  `apellidoM` varchar(255) NOT NULL,
+  `edad` int(3) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `pass` varchar(30) NOT NULL,
+  `rol` int(1) NOT NULL DEFAULT 2
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Dumping data for table `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nombres`, `apellidoP`, `apellidoM`, `edad`, `email`, `pass`, `rol`) VALUES
-(1, 'Karold', 'Aguirre', 'Rangel', 22, 'elkarololo@ceti.mx', '123', 2),
-(2, 'Rosa', 'Santana', 'CETI', 50, 'rsantana@ceti.mx', '123456', 2);
+(1, 'Ramses Alejandro', 'Lopez', 'Anceno', 20, 'a22310355@ceti.mx', '@ramses', 0),
+(2, 'Karold', 'Aguirre', 'Rangel', 20, 'akarololo@gmail.com', '1234', 2),
+(3, 'Pilar', 'Mora', 'Gomez', 20, 'shai13@gmail.com', '123456789', 2);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `producto`
+-- Indexes for table `producto`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `producto`
+-- AUTO_INCREMENT for table `producto`
 --
 ALTER TABLE `producto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -146,6 +146,8 @@ body {
 }
 
 .menu__content > .bottomSection > .userAccount .signOut {
+	display: flex;
+	gap: 10px;
 	color: var(--color-primary);
 }
 

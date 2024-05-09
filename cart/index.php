@@ -1,28 +1,17 @@
 <?php
-	require "./php/connection.php";
+	include "../admin/php/connection.php";
 	session_start();
 
-	if(isset($_SESSION['id'])) {
-		$id = $_SESSION['id'];
-		$message = '';
+	// Verificar si la sesión del usuario está iniciada
+	if (!isset($_SESSION['email'])) {
+		// Redirigir al usuario a la página de inicio de sesión si no ha iniciado sesión
+		header('Location: ../login/');
+		exit;
+}
 
-		$sql2 = mysqli_query($connection, "SELECT id, nombres, apellidoP, apellidoM, email, rol FROM usuario WHERE id = '$id'");
-
-		if($sql2) {
-			$numRows = mysqli_num_rows($sql2);
-			if($numRows > 0) {
-				while($row = mysqli_fetch_array($sql2)) {
-					$_SESSION['nombre'] = $row['nombres'];
-					$_SESSION['apellidoP'] = $row['apellidoP'];
-					$_SESSION['apellidoM'] = $row['apellidoM'];
-					$_SESSION['email'] = $row['email'];
-				}
-			} else
-				$message = 'No se encontro el id del usuario :(';
-		} else
-			$message = 'Error al ejecutar consulta: '.mysqli_error($connection);
-	}
-
+	// Verificar si hay productos en el carrito
+	if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0)
+		$total = 0; // Inicializar el total del carrito
 ?>
 
 <!DOCTYPE html>
@@ -30,15 +19,16 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="../assets/icons/catalogo.png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="../globales.css?ts=<?=time()?>">
 	<link rel="stylesheet" href="./style.css?ts=<?=time()?>">
-	<title>View Products | Admin</title>
+	<!-- <link rel="stylesheet" href="./styleL.css?ts=<?=time()?>" media="(min-width: 768px)"> -->
+	<title>Carrito | Detalles con Corazon</title>
 </head>
 <body>
 	<?php
@@ -54,7 +44,7 @@
 					<i class="fa-solid fa-bars"></i>
 				</label>
 				<figure class="brand">
-					<a href="../home" class="redirect-home">
+					<a href="../catalogo/" class="redirect-home">
 						<img src="../assets/logo2.png" alt="Logo" class="logoImage">
 						<p class="logoName">Detalles con Corazón</p>
 					</a>
@@ -107,74 +97,57 @@
   </aside>
 
 	<section class="productContainer">
-		<h2 class="title">Ver productos</h2>
-		<a href="./insert/product.php" class="linkToAddProduct">Agregar producto</a>
-		<form action="./index.php" method="post" class="buscador">
-			<input type="text" name="buscador" id="buscador" placeholder="Nombre o Descripcion">
-			<input type="submit" value="Buscar">
-		</form>
-		<?php
-			if(!empty($_POST['buscador'])) {
-				$aKeyword = explode(" ", $_POST['buscador']);
-				$query ="SELECT * FROM producto WHERE nombre like '%" . $aKeyword[0] . "%' OR descripcion like '%" . $aKeyword[0] . "%'";
-
-				for($i = 1; $i < count($aKeyword); $i++)
-					if(!empty($aKeyword[$i])) {
-						$query .= " OR nombre like '%" . $aKeyword[$i] . "%'";
-						$query .= " OR descripcion like '%" . $aKeyword[$i] . "%'";
-					}
-
-				$result = mysqli_query($connection, $query);
-				echo "<p class='keyWord'>Has buscado la palabra clave:<b> ". $_POST['buscador']."</b></p>";
-
-				if(mysqli_num_rows($result) > 0) {
-					$row_count = 0;
-					echo "<p class='resultados'>Resultados encontrados: </p>";
-					echo "<table class='productsTable'>";
-					while($row = mysqli_fetch_array($result)) {
-						$row_count++;
-						echo "<tr><td>".$row_count." </td><td>". $row['nombre'] . "</td><td>". $row['descripcion'] . "</td></tr>";
-					}
-					echo "</table>";
-				} else
-					echo "<p class='sinResultados'>Resultados encontrados: <b>Ninguno</b></p>";
-			}
-		?>
+		<h2 class="title">Carrito de compras</h2>
 
 		<div class="table-container">
 			<table class="productsTable">
 				<thead class="encabezadoTable">
 					<tr>
-						<th class="id">ID</th>
 						<th class="url">IMAGEN</th>
 						<th class="nombre">NOMBRE</th>
 						<th class="descripcion">DESCRIPCION</th>
-						<th class="existencias">EXISTENCIAS</th>
+						<th class="existencias">CANTIDAD</th>
 						<th class="precio">PRECIO</th>
-						<th class="operaciones">PETICION</th>
+						<th class="subtotal">SUBTOTAL</th>
+						<th class="eliminar">ELIMINAR</th>
 					</tr>
 				</thead>
 				<tbody class="cuerpoTable">
-					<?php while($row = mysqli_fetch_array($sql)) : ?>
+					<?php foreach ($_SESSION['carrito'] as $key => $item) : ?>
 						<tr class="filaInfoProduct">
-							<td class="idData"><p><?php echo $row['id'] ?></p></td>
-							<td class="urlData"><figure style="background-image: url('<?php echo $row['fotoURL'] ?>');"></figure></td>
-							<td class="nombreData"><p><?php echo $row['nombre'] ?></p></td>
-							<td class="descripcionData"><p><?php echo $row['descripcion'] ?></p></td>
-							<td class="existenciasData"><p><?php echo $row['existencia'] ?></p></td>
-							<td class="precioData"><p>$ <?php echo $row['precio'] ?></p></td>
+							<td class="urlData"><figure style="background-image: url('<?php echo $item['foto'] ?>');"></figure></td>
+							<td class="nombreData"><p><?php echo $item['nombre'] ?></p></td>
+							<td class="descripcionData"><p><?php echo $item['descripcion'] ?></p></td>
+							<td class="existenciasData"><p><?php echo $item['cantidad'] ?></p></td>
+							<td class="precioData"><p>$ <?php echo $item['precio'] ?></p></td>
+							<td class="subtotalData"><p><?php echo number_format($item['precio'] * $item['cantidad']) ?></p></td>
 							<td class="queryButton">
-								<a href="./update/?producto=editar&id=<?php echo $row['id'] ?>" class="operation fa-solid fa-pen-nib"><span>Modificar</span></a>
-								<?php if($row['id'] != 1) : ?>
-									<a href="./drop/?producto=eliminar&id=<?php echo $row['id'] ?>" onclick="return confirm('Estas seguro de que desear eliminar el postre <?php echo $row['nombre'] ?>?')" class="operation fa-regular fa-trash-can"><span>Eliminar</span></a>
-								<?php endif; ?>
+								<form action="./eliminarProducto.php" method="post" class="">
+									<input type="hidden" name="producto" value="<?php echo $key; ?>">
+									<button type="submit" class="">
+										<i class="fa-regular fa-trash-can"></i>Eliminar
+									</button>
+								</form>
 							</td>
 						</tr>
-					<?php endwhile; ?>
+						<?php $total += $item['precio'] * $item['cantidad']; ?>
+					<?php endforeach; ?>
+					<tr>
+						<td><b>Total :</b></td>
+						<td><?php echo number_format($total); ?></td>
+						<td class="pdf">
+							<form action="../admin/php/generatePDF.php" method="post">
+								<input type="submit" value="Enviar PDF">
+							</form>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
 	</section>
+
+
+	<a href="../catalogo/">Volver a la lista de productos</a>
 	<?php endif; ?>
 </body>
 </html>

@@ -11,7 +11,7 @@
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 
-		$sql = mysqli_query($connection, "INSERT INTO usuario(nombres, apellidoP, apellidoM, edad, email, pass, rol) VALUES ('$name', '$apellidoP', '$apellidoM', '$age', '$email', '$password', 2)");
+		$sql = mysqli_query($connection, "INSERT INTO usuario (nombres, apellidoP, apellidoM, edad, email, pass) VALUES ('$name', '$apellidoP', '$apellidoM', '$age', '$email', '$password')");
 
 		if($sql)
 			$message = 'Se creo el usuario correctamente';

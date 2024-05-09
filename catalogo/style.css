@@ -33,9 +33,16 @@ body {
 	align-items: center;
 }
 
-.mobile-header .navbar-left i {
-	font-size: 35px;
+.mobile-header .navbar-left>.navIcons {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.mobile-header .navbar-left > .navIcons i {
 	margin-top: 5px;
+	font-size: 35px;
+	color: var(--just-white);
 }
 
 .mobile-header .navbar-left>.brand {
@@ -146,6 +153,8 @@ body {
 }
 
 .menu__content>.bottomSection>.userAccount .signOut {
+	display: flex;
+	gap: 10px;
 	color: var(--color-primary);
 }
 

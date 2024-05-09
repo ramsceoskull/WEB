@@ -6,9 +6,6 @@
 		$id = $_SESSION['id'];
 		$message = '';
 
-		if(!isset($_SESSION['carrito']))
-			$_SESSION['carrito'] = array();
-
 		$sql2 = mysqli_query($connection, "SELECT id, nombres, apellidoP, apellidoM, email, rol FROM usuario WHERE id = '$id'");
 
 		if($sql2) {
@@ -20,30 +17,23 @@
 					$_SESSION['apellidoM'] = $row['apellidoM'];
 					$_SESSION['email'] = $row['email'];
 				}
-				$message = 'Error al ingresar la contraseña';
 			} else
-				$message = 'No se encontro el id del usuario :(';
+			$message = 'No se encontro el id del usuario :(';
 		} else
-			$message = 'Error al ejecutar consulta: '.mysqli_error($connection);
+		$message = 'Error al ejecutar consulta: '.mysqli_error($connection);
 	}
 
-	$_SESSION['carrito'][] = array(
-		'nombre' => $_POST['nombre'],
-		'descripcion' => $_POST['descripcion'],
-		'existencia' => $_POST['cantidad'],
-		'precio' => $_POST['precio'],
-		'foto' => $_POST['foto']
-	);
+	if(!isset($_SESSION['carrito']))
+		$_SESSION['carrito'] = array();
 
-
-	?>
+?>
 
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="icon" href="../assets/icons/catalogo.png">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="../assets/icons/catalogo.png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -56,21 +46,21 @@
 </head>
 <body>
 	<?php if(isset($_SESSION['email'])) : ?>
-		<?php
-		echo var_dump($_SESSION['carrito']);
+	<?php
 		$sql = mysqli_query($connection, "SELECT * FROM producto");
 	?>
 	<label for="" id="top"></label>
 	<header class="mobile-header tablet-header desktop-header">
 		<nav>
 			<section class="navbar-left">
-				<label for="btn-menu">
-					<i class="fa-solid fa-bars"></i>
-				</label>
+				<div class="navIcons">
+					<a href="../cart/"><i class="fa-solid fa-bag-shopping icon"></i></a>
+					<label for="btn-menu"><i class="fa-solid fa-bars"></i></label>
+				</div>
 				<figure class="brand">
 					<a href="../home" class="redirect-home">
 						<img src="../assets/logo2.png" alt="Logo" class="logoImage">
-						<p class="logoName">Detalles con Corazón</p>
+						<p class="logoName">Detalles con<br>Corazón</p>
 					</a>
 				</figure>
 				<ul class="listNavigation">
@@ -84,7 +74,7 @@
 			<section class="navbar-right">
 				<ul class="listProfileInfo">
 					<li class="profileEmail">
-						<p class="email">jackiedoes@gmail.com</p>
+						<p class="email"><?php echo $_SESSION['email'] ?></p>
 						<i class="fa-solid fa-angle-down"></i>
 					</li>
 					<li class="profileShopping">
@@ -113,8 +103,8 @@
 			</section>
 			<section class="bottomSection">
 				<ul class="userAccount">
-					<li><a href="/" class="email">jackiedoes@gmail.com</a></li>
-					<li><i class="fa-solid fa-arrow-right-from-bracket"></i><a href="../admin/php/logout.php" class="signOut">Cerrar sesion</a></li>
+					<li><a href="/" class="email"><?php echo $_SESSION['email'] ?></a></li>
+					<li><a href="../admin/php/logout.php" class="fa-solid fa-arrow-right-from-bracket signOut">Cerrar sesion</a></li>
 				</ul>
 			</section>
 		</nav>
@@ -124,7 +114,9 @@
 		<h2 class="title">CATALOGO</h2>
 
 		<section class="cardsContainer">
-			<p class="message">Bienvenido <?= $_SESSION['email'] ?></p>
+			<?php if(!empty($message)) : ?>
+				<p class="message"><?= $message; ?></p>
+			<?php endif; ?>
 			<?php while($row = mysqli_fetch_array($sql)) :?>
 				<article class="cardProduct">
 					<figure class="productImage" style="background-image: url('<?php echo $row['fotoURL'] ?>');"></figure>
@@ -134,17 +126,38 @@
 						<p class="existencias">Existencias: <span><?php echo $row['existencia'] ?></span></p>
 						<p class="price"><span>$</span> <?php echo $row['precio'] ?></p>
 					</div>
-					<form action="./index.php" method="post" class="split">
-						<input type="hidden" name="foto" value="<?php echo $row['fotoURL']; ?>">
-						<input type="hidden" name="nombre" value="<?php echo $row['nombre']; ?>">
-						<input type="hidden" name="descripcion" value="<?php echo $row['descripcion']; ?>">
-						<input type="number" name="cantidad" required>
-						<input type="hidden" name="precio" value="<?php echo $row['precio']; ?>">
-						<input type="submit" value="Agregar" name="btnAgregar">
+					<form action="./" method="post" class="split">
+						<input type="hidden" name="image" value="<?php echo $row['fotoURL']; ?>">
+						<input type="hidden" name="name" value="<?php echo $row['nombre']; ?>">
+						<input type="hidden" name="description" value="<?php echo $row['descripcion']; ?>">
+						<input type="hidden" name="cost" value="<?php echo $row['precio']; ?>">
+						<div class="split30">
+							<button type="button" onclick="decreaseQuantity(this.nextElementSibling)">-</button>
+							<input type="number" name="amount" value="1" min="1">
+							<button type="button" onclick="increaseQuantity(this.previousElementSibling)">+</button>
+						</div>
+						<input type="submit" value="Agregar al carrito">
 					</form>
 				</article>
 			<?php endwhile; ?>
 		</section>
+		<?php
+			if(isset($_POST['name'])) {
+				$foto = $_POST['image'];
+				$nombre = $_POST['name'];
+				$descripcion = $_POST['description'];
+				$cantidad = $_POST['amount'];
+				$precio = $_POST['cost'];
+
+				$_SESSION['carrito'][] = array(
+					'foto' => $foto,
+					'nombre' => $nombre,
+					'descripcion' => $descripcion,
+					'cantidad' => $cantidad,
+					'precio' => $precio
+				);
+			}
+		?>
 	</section>
 
 	<footer class="footer-container">
@@ -185,6 +198,18 @@
 		<a href="../login/">Iniiciar</a>
 
 	<?php endif; ?>
+	<script>
+		// Funciones JavaScript para aumentar y disminuir la cantidad
+		function decreaseQuantity(input) {
+				if (input.value > 1) {
+						input.value = parseInt(input.value) - 1;
+				}
+		}
+
+		function increaseQuantity(input) {
+				input.value = parseInt(input.value) + 1;
+		}
+	</script>
 	<script src="../script.js"></script>
 </body>
 </html>

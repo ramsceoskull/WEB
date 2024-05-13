@@ -132,11 +132,15 @@
 						<input type="hidden" name="description" value="<?php echo $row['descripcion']; ?>">
 						<input type="hidden" name="cost" value="<?php echo $row['precio']; ?>">
 						<div class="split30">
-							<button type="button" onclick="decreaseQuantity(this.nextElementSibling)">-</button>
+							<button type="button" onclick="decreaseQuantity(this.nextElementSibling)">
+								<i class="fa-solid fa-circle-minus"></i>
+							</button>
 							<input type="number" name="amount" value="1" min="1">
-							<button type="button" onclick="increaseQuantity(this.previousElementSibling)">+</button>
+							<button type="button" onclick="increaseQuantity(this.previousElementSibling)">
+								<i class="fa-solid fa-circle-plus"></i>
+							</button>
 						</div>
-						<input type="submit" value="Agregar al carrito">
+						<button type="submit"><img src="../assets/white/anadir-al-carrito.png" alt=""><!-- <i class="fa-solid fa-cart-plus"></i> -->Agregar al carrito</button>
 					</form>
 				</article>
 			<?php endwhile; ?>

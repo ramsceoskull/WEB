@@ -12,6 +12,5 @@
 	if($sql) {
 		header('Location: ../insert/');
 		exit;
-	}
-	else
+	} else
 		echo " -> Error al registrar producto";

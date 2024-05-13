@@ -136,7 +136,7 @@
 						<td><b>Total :</b></td>
 						<td><?php echo number_format($total); ?></td>
 						<td class="pdf">
-							<form action="../admin/php/generatePDF.php" method="post">
+							<form action="../admin/php/sendEmail.php" method="post">
 								<input type="submit" value="Enviar PDF">
 							</form>
 						</td>

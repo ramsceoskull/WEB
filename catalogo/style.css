@@ -257,6 +257,53 @@ body {
 	font-weight: 800;
 }
 
+.split {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 10px;
+}
+.split > button[type="submit"] {
+	display: flex;
+	align-items: center;
+	padding: 7px;
+	gap: 5px;
+	background-color: var(--color-primary);
+	color: var(--just-white);
+	border-radius: 5px;
+	border: none;
+}
+.split > button > img {
+	width: 20px;
+}
+
+.split30 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+.split30 > button {
+	display: flex;
+	align-items: center;
+	background-color: transparent;
+	outline: none;
+	border: none;
+}
+.split30 > button > i {
+	font-size: 20px;
+	color: var(--color-primary);
+}
+
+.split30 > input {
+	height: 20px;
+	width: 40px;
+	text-align: center;
+	border: 1px solid var(--color-primary);
+	border-radius: 5px;
+}
+
 
 
 .footer-container {

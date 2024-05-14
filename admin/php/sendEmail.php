@@ -1,7 +1,7 @@
 <?php
 	include "./connection.php";
-
 	session_start();
+
 
 	if(!isset($_SESSION['id'])){
 		$msg = "No se ha iniciado sesión";
@@ -12,11 +12,8 @@
 	}
 
 	$id = $_SESSION['id'];
-	$user = mysqli_query($connection,"SELECT * FROM usuario WHERE id = '$id'");
-	$userProfile = mysqli_fetch_array($user);
-
-    $_SESSION['email'] = $userProfile['email'];
-
+	$sql = mysqli_query($connection,"SELECT * FROM usuario WHERE id = '$id'");
+	$user = mysqli_fetch_array($sql);
 
     require('../lib/fpdf/fpdf.php');
     $pdf = new FPDF('P', 'mm', 'A4');
@@ -25,29 +22,29 @@
 
     $pdf->AddPage();
     $pdf->SetXY($x, $y);
-    $pdf->Image('../../assets/logo2.png',150,20,33,0,'PNG','index.php');
-    $pdf->SetFont('Courier','B',16);
+    $pdf->Image('../../assets/logoBlack.png',165,10,40,0,'PNG','index.php');
+    $pdf->SetFont('Arial','B',16);
     $pdf->SetFillColor(255,196,102);
     $pdf->SetDrawColor(255,255,255);
 
     // green: rgb(131,164,102);
     // black: rgb(0, 0, 0);
-    $pdf->SetTextColor(131,164,102);
+    $pdf->SetTextColor(191,131,141);
 
-    $pdf->SetXY(25,$y+5);
+    /* $pdf->SetXY(25,$y+5);
     $pdf->SetFontSize(35);
-    $pdf->Cell(150,10,'RECIBO',0,0,'L',0);
+    $pdf->Cell(150,10,'RECIBO',0,0,'L',0); */
     $pdf->SetXY(25,$y+25);
     $pdf->SetFontSize(9);
     $pdf->SetTextColor(0,0,0);
 
     // Datos genéricos
-    $pdf->Cell(60,0,'DE: GRUBI');
+    $pdf->Cell(60,0,'DE: DETALLES CON CORAZON');
     $fecha = Date("d-m-Y");
     $pdf->Cell(0,0,'FECHA DE EXPEDICION: '.$fecha.'');
-    $pdf->SetXY(25,38);
+    $pdf->SetXY(25, 38);
     $pdf->Cell(60,5,'TELEFONO: 3322556155');
-    $pdf->Cell(60,5,'CORREO: a22310355@ceti.mx');
+    $pdf->Cell(60,5,'CORREO: ramses.social0@gmail.com');
     //Fin datos genéricos
 
     //Datos del comprador
@@ -55,23 +52,22 @@
     $pdf->Cell(60,10,'PARA:');
     $pdf->Cell(60,10,'EMAIL:');
     $pdf->SetXY(25,53);
-    $pdf->SetTextColor(131,164,102);
-    $pdf->Cell(60,15, $userProfile['nombres'].' '.$userProfile['apellidoP']);
+    $pdf->SetTextColor(191,131,141);
+    $pdf->Cell(60,15, $user['nombres'].' '.$user['apellidoP'].' '.$user['apellidoM']);
     $pdf->SetTextColor(0,0,0);
-    $pdf->Cell(60,15, $_SESSION['email']);
+    $pdf->Cell(60,15, $user['email']);
     $pdf->SetXY(25,56);
 
     // Datos de la compra
     $y = 40;
     // $pdf->SetDrawColor(0,0,0):
-    $pdf->SetDrawColor(131,164,102);
-    $pdf->SetFillColor(131,164,102);
+    $pdf->SetDrawColor(191,131,141);
+    $pdf->SetFillColor(191,131,141);
 
     $pdf->SetXY(25,85);
-    $pdf->Cell(40,10,'Modelo de maceta',1,0,'c', true);
-    $pdf->Cell(20,10,'Precio ',1,0,'c', true);
+    $pdf->Cell(40,10,'Nombre',1,0,'c', true);
+    $pdf->Cell(20,10,'Precio',1,0,'c', true);
     $pdf->Cell(20,10,'Cantidad',1,0,'c', true);
-    $pdf->Cell(20,10,'IVA',1,0,'c', true);
     $pdf->Cell(25,10,'Subtotal',1,1,'c', true);
 
     $total = 0;
@@ -79,37 +75,24 @@
     // Verificar si el carrito está definido
     if (isset($_SESSION['carrito'])) {
         $pdf->SetXY(25, 95);
-        foreach ($_SESSION['carrito'] as $btn_sku => $maceta) {
+        foreach ($_SESSION['carrito'] as $key => $value) {
             $pdf->SetX(25);
-            $pdf->Cell(40, 5, $maceta['nombre'], 1, 0, "L");
-            $pdf->Cell(20, 5, "$" . $maceta['precio'], 1, 0, "L");
-            $pdf->Cell(20, 5, $maceta['cantidad'], 1, 0, "L");
+            $pdf->Cell(40, 5, $value['nombre'], 1, 0, "L");
+            $pdf->Cell(20, 5, "$" . $value['precio'], 1, 0, "L");
+            $pdf->Cell(20, 5, $value['cantidad'], 1, 0, "L");
 
-            /* $iva = $maceta['subtotal'] * 0.16;
+            $subtotal = $value['cantidad'] * $value['precio'];
 
-            $pdf->Cell(20, 5, "$" . $iva, 1, 0, "L");
-            $pdf->Cell(25, 5, "$" . $maceta['subtotal'], 1, 1, "L");
+            $pdf->Cell(20, 5, "$" . $subtotal, 1, 1, "L");
 
-            $total += $maceta['subtotal'] + $iva; */
+            $total += $subtotal;
         }
-
-        /* $IVA = $total * 0.16;
-        $sub = $total + $IVA;
 
         $pdf->SetXY(25, 170);
         $pdf->Cell(30, 5, "TOTAL:", 0, "L");
         $pdf->SetXY(50, 170);
         $pdf->Cell(30, 5, " $ " . $total, "", 0, "L");
 
-        $pdf->SetXY(25, 175);
-        $pdf->Cell(30, 5, "IVA:", 0, "L");
-        $pdf->SetXY(50, 175);
-        $pdf->Cell(30, 5, " $ " . $IVA, "", 0, "L");
-
-        $pdf->SetXY(25, 180);
-        $pdf->Cell(30, 5, "SUBTOTAL:", 0, "L");
-        $pdf->SetXY(50, 180);
-        $pdf->Cell(30, 5, " $ " . $sub, "", 0, "L"); */
     } else {
         $pdf->SetXY(25, 95);
         $pdf->Cell(0, 10, "El carrito se encuentra vacio en estos momentos", 0, 1);
@@ -122,18 +105,18 @@
     // $pdf->Image('../img/products/' .$rprod['imagen'],70,215,80,0,'PNG','');
 
     // title of pdf
-    $title = 'COMPRA ' .$userProfile['nombres'] . " ". Date("F_j_Y");
+    $title = 'COMPRA ' .$user['email'] . " ". Date("F_j_Y");
 
     //Output the document
     // $pdf->Output('I', $title . ".pdf");
     $pdf->Output('F', $title . ".pdf");
 
     // Configuración email
-    $to = $_SESSION['email'];
+    $to = $user['email'];
     // $from = 'no-reply@tenko.com]';
-    $from = "a22310355@ceti.mx";
+    $from = "ramses.social0@gmail.com";
     $subject = $title;
-    $msg = 'Se adjuntan los detalles de su compra en Detalles con Corazón';
+    $msg = 'Se adjuntan los detalles de su compra en nuestro sitio web. DETALLES CON CORAZON...';
 
     // archivos adjuntos
     $file = $title . ".pdf";
@@ -141,9 +124,9 @@
     $boundary = md5(date('r', time()));
 
     // encabezado
-    $headers = "From: PATY <$from>\r\n";
+    $headers = "From: RAMSCEO <$from>\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
-    // $headers .= "Return-path: $to\r\n";
+    $headers .= "Return-path: $to\r\n";
     $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
 
     // cuerpo del correo
@@ -162,7 +145,7 @@
 
     // enviar correo
     if (mail($to, $subject, $body, $headers)) {
-        header("Location: ../index.php");
+        header("Location: ../../email/sent.html");
         $_SESSION['carrito'] = [];
         //echo "<script>window.close();</script>";
     } else {

@@ -2,16 +2,20 @@
 	include "../admin/php/connection.php";
 	session_start();
 
+	$message = '';
+
 	// Verificar si la sesión del usuario está iniciada
 	if (!isset($_SESSION['email'])) {
 		// Redirigir al usuario a la página de inicio de sesión si no ha iniciado sesión
 		header('Location: ../login/');
 		exit;
-}
+	}
 
 	// Verificar si hay productos en el carrito
 	if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0)
 		$total = 0; // Inicializar el total del carrito
+	else
+		$message = "El carrito se encuentra vacio";
 ?>
 
 <!DOCTYPE html>
@@ -33,8 +37,6 @@
 <body>
 	<?php
 		$sql = mysqli_query($connection, "SELECT * FROM producto");
-
-		if(isset($_SESSION['email'])) :
 	?>
 
 	<header class="mobile-header tablet-header desktop-header">
@@ -101,53 +103,58 @@
 
 		<div class="table-container">
 			<table class="productsTable">
-				<thead class="encabezadoTable">
-					<tr>
-						<th class="url">IMAGEN</th>
-						<th class="nombre">NOMBRE</th>
-						<th class="descripcion">DESCRIPCION</th>
-						<th class="existencias">CANTIDAD</th>
-						<th class="precio">PRECIO</th>
-						<th class="subtotal">SUBTOTAL</th>
-						<th class="eliminar">ELIMINAR</th>
-					</tr>
-				</thead>
-				<tbody class="cuerpoTable">
-					<?php foreach ($_SESSION['carrito'] as $key => $item) : ?>
-						<tr class="filaInfoProduct">
-							<td class="urlData"><figure style="background-image: url('<?php echo $item['foto'] ?>');"></figure></td>
-							<td class="nombreData"><p><?php echo $item['nombre'] ?></p></td>
-							<td class="descripcionData"><p><?php echo $item['descripcion'] ?></p></td>
-							<td class="existenciasData"><p><?php echo $item['cantidad'] ?></p></td>
-							<td class="precioData"><p>$ <?php echo $item['precio'] ?></p></td>
-							<td class="subtotalData"><p><?php echo number_format($item['precio'] * $item['cantidad']) ?></p></td>
-							<td class="queryButton">
-								<form action="./eliminarProducto.php" method="post" class="">
-									<input type="hidden" name="producto" value="<?php echo $key; ?>">
-									<button type="submit" class="">
-										<i class="fa-regular fa-trash-can"></i>Eliminar
+				<?php if(!empty($message)) : ?>
+					<?= $message; ?>
+				<?php else : ?>
+					<thead class="encabezadoTable">
+						<tr>
+							<th class="url">IMAGEN</th>
+							<th class="nombre">NOMBRE</th>
+							<th class="descripcion">DESCRIPCION</th>
+							<th class="existencias">CANTIDAD</th>
+							<th class="precio">PRECIO</th>
+							<th class="subtotal">SUBTOTAL</th>
+							<th class="eliminar">ELIMINAR</th>
+						</tr>
+					</thead>
+					<tbody class="cuerpoTable">
+						<?php foreach ($_SESSION['carrito'] as $key => $item) : ?>
+							<tr class="filaInfoProduct">
+								<td class="urlData"><figure style="background-image: url('<?php echo $item['foto'] ?>');"></figure></td>
+								<td class="nombreData"><p><?php echo $item['nombre'] ?></p></td>
+								<td class="descripcionData"><p><?php echo $item['descripcion'] ?></p></td>
+								<td class="existenciasData"><p><?php echo $item['cantidad'] ?></p></td>
+								<td class="precioData"><p>$ <?php echo $item['precio'] ?></p></td>
+								<td class="subtotalData"><p><?php echo number_format($item['precio'] * $item['cantidad']) ?></p></td>
+								<td class="queryButton">
+									<form action="./eliminarProducto.php" method="post" class="">
+										<input type="hidden" name="producto" value="<?php echo $key; ?>">
+										<button type="submit" class="">
+											<i class="fa-regular fa-trash-can"></i>Eliminar
+										</button>
+									</form>
+								</td>
+							</tr>
+							<?php $total += $item['precio'] * $item['cantidad']; ?>
+						<?php endforeach; ?>
+						<tr>
+							<td><b>Total :</b></td>
+							<td><?php echo number_format($total); ?></td>
+							<td class="pdf">
+								<form action="../admin/php/sendEmail.php" method="post">
+									<button type="submit">
+										<i class="fa-solid fa-file-pdf"></i>Enviar pdf
 									</button>
 								</form>
 							</td>
 						</tr>
-						<?php $total += $item['precio'] * $item['cantidad']; ?>
-					<?php endforeach; ?>
-					<tr>
-						<td><b>Total :</b></td>
-						<td><?php echo number_format($total); ?></td>
-						<td class="pdf">
-							<form action="../admin/php/sendEmail.php" method="post">
-								<input type="submit" value="Enviar PDF">
-							</form>
-						</td>
-					</tr>
-				</tbody>
+					</tbody>
+				<?php endif; ?>
 			</table>
 		</div>
 	</section>
 
 
 	<a href="../catalogo/">Volver a la lista de productos</a>
-	<?php endif; ?>
 </body>
 </html>
